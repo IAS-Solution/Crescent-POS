@@ -11,7 +11,13 @@ namespace Crescent_POS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                if (Session["user_name"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+            }
         }
     }
 }
