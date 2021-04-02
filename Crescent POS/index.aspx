@@ -2,8 +2,6 @@
 
 
 
-
-
   
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" Class="content-wrapper">
     <!--Content Wrapper. Contains page content-->
