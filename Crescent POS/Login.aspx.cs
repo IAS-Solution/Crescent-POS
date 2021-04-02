@@ -30,36 +30,32 @@ namespace Crescent_POS
             {
 
                 string cd = ("SELECT user_name,password, user_level, full_name FROM tbllogin WHERE  user_name=@uname and password=@pword ");
-                
+                con.Open();
                 MySqlCommand cmd = new MySqlCommand(cd, con);
-                //MySqlDataReader rdr;
+                MySqlDataReader rdr;
                 cmd.Parameters.AddWithValue("@uname", txtUser.Text.Trim());
                 cmd.Parameters.AddWithValue("@pword", txtpassword.Text.Trim());
-                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-
-                con.Open();
                 cmd.ExecuteNonQuery();
-                if (dt.Rows.Count>0)
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
                 {
+                    Session["full_name"] = (rdr.GetString(0));
+                    Session["user_name"] = (rdr.GetString(1));
+                    Session["user_level"] = (rdr.GetString(2));
                     Response.Redirect("index.aspx");
                 }
                 else
                 {
-                    string script = "alert(\"Incorrect User Name or Password!\");";
+                    string script="alert(\"Incorrect User Name Or Password!\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-
                 }
-                con.Close();
                
-
-
-
             }
-            catch
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.StackTrace);
+                string script = "alert(\"" +ex.StackTrace+"\")";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
     }
