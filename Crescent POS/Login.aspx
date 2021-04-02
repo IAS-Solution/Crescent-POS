@@ -27,7 +27,7 @@
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../../index3.html" method="post" runat="server">
+      <form runat="server">
         <div class="input-group mb-3">
           <%--<input type="email" class="form-control" placeholder="Email">--%>
             <asp:TextBox ID="txtUser" runat="server" TextMode="SingleLine" Class="form-control" placeholder="User Name"></asp:TextBox>

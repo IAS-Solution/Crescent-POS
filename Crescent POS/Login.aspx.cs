@@ -9,8 +9,6 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 
 
-
-
 namespace Crescent_POS
 {
     public partial class Login : System.Web.UI.Page
@@ -30,21 +28,21 @@ namespace Crescent_POS
         {
             try
             {
-               
-                string cd = ("select full_name,user_name,password,user_level  from tbllogin where username=@d1 and password=@d2 ");
-                con.Open();
+
+                string cd = ("SELECT user_name,password, user_level, full_name FROM tbllogin WHERE  user_name=@uname and password=@pword ");
+                
                 MySqlCommand cmd = new MySqlCommand(cd, con);
-                MySqlDataReader rdr;
-                cmd.Parameters.AddWithValue("d1", txtUser.Text.Trim());
-                cmd.Parameters.AddWithValue("d2", txtpassword.Text.Trim());
+                //MySqlDataReader rdr;
+                cmd.Parameters.AddWithValue("@uname", txtUser.Text.Trim());
+                cmd.Parameters.AddWithValue("@pword", txtpassword.Text.Trim());
+                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                con.Open();
                 cmd.ExecuteNonQuery();
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
+                if (dt.Rows.Count>0)
                 {
-                    Session["full_name"] = (rdr.GetString(0));
-                    //string name = (rdr.GetString(0));
-                    Session["user_name"] = (rdr.GetString(1));
-                    Session["user_level"] = (rdr.GetString(2));
                     Response.Redirect("index.aspx");
                 }
                 else
@@ -53,8 +51,8 @@ namespace Crescent_POS
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
 
                 }
-
-
+                con.Close();
+               
 
 
 
