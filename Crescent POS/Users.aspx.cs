@@ -15,11 +15,31 @@ namespace Crescent_POS
         public static string connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         MySqlConnection con = new MySqlConnection(connectionString);
         MySqlDataReader rdr;
-        MySqlCommand cmd;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            ////txtuserid.Enabled = false;
+            
+
+            //con.Open();
+
+           
+
+            //MySqlCommand com = new MySqlCommand("SELECT MAX(user_id) FROM tbllogin", con);
+
+            //MySqlDataReader reader = com.ExecuteReader();
+
+            //if (reader.Read())
+
+            //{
+            //    string id = reader["user_id"].ToString(); ;
+            //    txtuserid.Text = id + 1;
+            //    reader.Close();
+
+            //    con.Close();
+            //}
+                if (!Page.IsPostBack)
             {
                 if (Session["user_name"] == null)
                 {
@@ -74,29 +94,52 @@ namespace Crescent_POS
                     }
                     return;
                 }
+                //data insert
+                MySqlConnection con1 = new MySqlConnection(connectionString);
+                con1.Open();
+                MySqlCommand cm = new MySqlCommand("Insert into tbllogin (user_name,password,user_level,full_name )  values( @user_name, @password, @user_level,@full_name)", con1);
 
-              
-                using (MySqlConnection con = new MySqlConnection(connectionString))
-                {
-                    con.Open();
-                    string cd = "insert into tbllogin(Full_name,user_name,user_level,password) values(@Full_name,@user_name,@user_level,@password)";
-                    cmd = new MySqlCommand(cd);
-                    cmd.Parameters.AddWithValue("@Full_name", txtFullName.Text);
-                    cmd.Parameters.AddWithValue("@user_name", txtFullName.Text);
-                    cmd.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
-                    cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    string script = "alert(\"Data saved!\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                   // clear();
-                   // DataLoad();
-
-                }
+               
+                cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
+                cm.Parameters.AddWithValue("@password", txtPassword.Text);
+                cm.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
+                cm.Parameters.AddWithValue("@full_name", txtFullName.Text);
+                cm.ExecuteNonQuery();
+                cm.Dispose();
+                Response.Write("<script>alert('Data inserted successfully!')</script>");
+                con1.Close();
             }
-            catch(Exception ex)
+            catch (MySqlException ex)
             {
+                Response.Write("<script>alert(" + ex + ")</script>");
+            }
+           
+        }
+        protected void btnupdate_Click(object sender, EventArgs e)
+        {
+            MySqlConnection con2 = new MySqlConnection(connectionString);
+            con2.Open();
 
+            try
+            {
+                con2.Open();
+                string UID = txtuserid.Text;
+                MySqlCommand cm = new MySqlCommand("update tbllogin Set  user_name = @user_name, password = @password, user_level = @user_level, full_name = @full_name where UID = @UID", con2);
+                cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
+                cm.Parameters.AddWithValue("@password", txtPassword.Text);
+                cm.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
+                cm.Parameters.AddWithValue("@full_name", txtFullName.Text);
+                cm.Parameters.AddWithValue("UID", UID);
+                cm.ExecuteNonQuery();
+                cm.Dispose();
+                Response.Write("<script>alert('Data update successfully!')</script>");
+                con2.Close();
+
+            }
+
+            catch (MySqlException ex)
+            {
+                Response.Write("<script>alert(" + ex + ")</script>");
             }
         }
     }

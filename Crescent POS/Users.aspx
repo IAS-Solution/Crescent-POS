@@ -38,7 +38,12 @@
           <div class="card-body">
               
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6"> 
+                  <div class="form-group">
+                  <label>User ID</label>
+                    <asp:TextBox ID="txtuserid" runat="server" Class="form-control" placeholder="User ID"></asp:TextBox>
+                </div> 
+
                 <div class="form-group">
                   <label>Full Name</label>
                     <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
@@ -72,6 +77,7 @@
           
           <div class="card-footer">  
               <asp:Button ID="btnSave" runat="server" Class="btn btn-primary" Text="Save" OnClick="btnSave_Click"/>
+               <asp:Button ID="btnupdate" runat="server" Class="btn btn-primary" Text="Update" OnClick="btnupdate_Click"/>
               <%--<button type="button" class="btn btn-primary">Primary</button>--%>
               <button type="button" class="btn btn-secondary">Secondary</button>
               <button type="button" class="btn btn-success">Success</button>
