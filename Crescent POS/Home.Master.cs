@@ -14,6 +14,8 @@ namespace Crescent_POS
         //public static string connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblfullname.Text = (string)Session["full_name"];
+            lblfullname.ForeColor = System.Drawing.Color.White;
 
             if (Session["user_level"].ToString() == "Admin")
             {

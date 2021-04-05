@@ -39,9 +39,9 @@ namespace Crescent_POS
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
-                    Session["full_name"] = (rdr.GetString(0));
-                    Session["user_name"] = (rdr.GetString(1));
+                    Session["user_name"] = (rdr.GetString(0));
                     Session["user_level"] = (rdr.GetString(2));
+                    Session["full_name"] = (rdr.GetString(3));
                     Response.Redirect("index.aspx");
                 }
                 else
