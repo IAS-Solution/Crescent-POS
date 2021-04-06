@@ -19,26 +19,7 @@ namespace Crescent_POS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ////txtuserid.Enabled = false;
-            
-
-            //con.Open();
-
            
-
-            //MySqlCommand com = new MySqlCommand("SELECT MAX(user_id) FROM tbllogin", con);
-
-            //MySqlDataReader reader = com.ExecuteReader();
-
-            //if (reader.Read())
-
-            //{
-            //    string id = reader["user_id"].ToString(); ;
-            //    txtuserid.Text = id + 1;
-            //    reader.Close();
-
-            //    con.Close();
-            //}
                 if (!Page.IsPostBack)
             {
                 if (Session["user_name"] == null)

@@ -39,10 +39,6 @@
               
             <div class="row">
               <div class="col-md-6"> 
-                  <div class="form-group">
-                  <label>User ID</label>
-                    <asp:TextBox ID="txtuserid" runat="server" Class="form-control" placeholder="User ID"></asp:TextBox>
-                </div> 
 
                 <div class="form-group">
                   <label>Full Name</label>
