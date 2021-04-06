@@ -19,8 +19,8 @@ namespace Crescent_POS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-                if (!Page.IsPostBack)
+
+            if (!Page.IsPostBack)
             {
                 if (Session["user_name"] == null)
                 {
@@ -81,7 +81,7 @@ namespace Crescent_POS
                 con1.Open();
                 MySqlCommand cm = new MySqlCommand("Insert into tbllogin (user_name,password,user_level,full_name )  values( @user_name, @password, @user_level,@full_name)", con1);
 
-               
+
                 cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
                 cm.Parameters.AddWithValue("@password", txtPassword.Text);
                 cm.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
@@ -95,23 +95,22 @@ namespace Crescent_POS
             {
                 Response.Write("<script>alert(" + ex + ")</script>");
             }
-           
+
         }
         protected void btnupdate_Click(object sender, EventArgs e)
         {
             MySqlConnection con2 = new MySqlConnection(connectionString);
-            con2.Open();
+
 
             try
             {
                 con2.Open();
-                string UID = txtuserid.Text;
-                MySqlCommand cm = new MySqlCommand("update tbllogin Set  user_name = @user_name, password = @password, user_level = @user_level, full_name = @full_name where UID = @UID", con2);
+                MySqlCommand cm = new MySqlCommand("update tbllogin Set  user_name = @user_name, password = @password, user_level = @user_level, full_name = @full_name where user_name = @user_name", con2);
                 cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
                 cm.Parameters.AddWithValue("@password", txtPassword.Text);
                 cm.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
                 cm.Parameters.AddWithValue("@full_name", txtFullName.Text);
-                cm.Parameters.AddWithValue("UID", UID);
+
                 cm.ExecuteNonQuery();
                 cm.Dispose();
                 Response.Write("<script>alert('Data update successfully!')</script>");
@@ -123,8 +122,21 @@ namespace Crescent_POS
             {
                 Response.Write("<script>alert(" + ex + ")</script>");
             }
+            DataLoard();
+
+
         }
 
+        public void txtboxclear()
+        {
+            txtFullName.Text = null;
+            txtPassword.Text = null;
+            txtUserName.Text = null;
+            txtFullName.Text = null;
+
+
+
+        }
         public void DataLoard()
         {
             string cmd = "select full_name,user_name,user_level,password from tbllogin";
