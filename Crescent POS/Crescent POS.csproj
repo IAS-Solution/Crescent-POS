@@ -90,6 +90,7 @@
   <ItemGroup>
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Supplier.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -118,6 +119,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Supplier.aspx.cs">
+      <DependentUpon>Supplier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supplier.aspx.designer.cs">
+      <DependentUpon>Supplier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

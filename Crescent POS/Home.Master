@@ -251,10 +251,10 @@
             </a>
           </li>
             <li class="nav-item">
-            <a href="Users.aspx" class="nav-link">
+            <a href="Supplier.aspx" class="nav-link">
               <i class="fas fa-archive">&nbsp;</i>
               <p>
-                 Add Items
+                 Add Supplier
                 <%--<span class="right badge badge-danger">New</span>--%>
               </p>
             </a>
