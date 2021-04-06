@@ -28,6 +28,7 @@ namespace Crescent_POS
                 }
             }
             DataLoard();
+           
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -36,20 +37,20 @@ namespace Crescent_POS
             {
                 if (txtFullName.Text == "")
                 {
-                    string script = "alert(\"Please give the name to save!\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    wrningfullname.Visible = true;
+
                     return;
                 }
                 if (txtUserName.Text == "")
                 {
-                    string script = "alert(\"Please give a username to save!\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    wrninguname.Visible = true;
+                  
                     return;
                 }
                 if (txtPassword.Text == "")
                 {
-                    string script = "alert(\"Please give a password to save!\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    wrningpword.Visible = true;
+                    
                     return;
                 }
 
@@ -64,8 +65,8 @@ namespace Crescent_POS
 
                 if (rdr.Read())
                 {
-                    string script = "alert(\"The username already exist please select a new one!\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    wrningunamechk.Visible = true;
+                   
                     txtUserName.Text = "";
                     txtUserName.Focus();
 
@@ -88,57 +89,105 @@ namespace Crescent_POS
                 cm.Parameters.AddWithValue("@full_name", txtFullName.Text);
                 cm.ExecuteNonQuery();
                 cm.Dispose();
-                Response.Write("<script>alert('Data inserted successfully!')</script>");
+                //Response.Write("<script>alert('Data inserted successfully!')</script>");
+                savealert.Visible = true;
                 con1.Close();
             }
             catch (MySqlException ex)
             {
                 Response.Write("<script>alert(" + ex + ")</script>");
             }
-
+            txtboxclear();
+            DataLoard();
+            
         }
         protected void btnupdate_Click(object sender, EventArgs e)
         {
-            MySqlConnection con2 = new MySqlConnection(connectionString);
 
-
-            try
+            if (string.IsNullOrWhiteSpace(txtUserName.Text))
             {
-                con2.Open();
-                MySqlCommand cm = new MySqlCommand("update tbllogin Set  user_name = @user_name, password = @password, user_level = @user_level, full_name = @full_name where user_name = @user_name", con2);
-                cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
-                cm.Parameters.AddWithValue("@password", txtPassword.Text);
-                cm.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
-                cm.Parameters.AddWithValue("@full_name", txtFullName.Text);
-
-                cm.ExecuteNonQuery();
-                cm.Dispose();
-                Response.Write("<script>alert('Data update successfully!')</script>");
-                con2.Close();
-
+                warningalert.Visible = true;
             }
-
-            catch (MySqlException ex)
+            else
             {
-                Response.Write("<script>alert(" + ex + ")</script>");
-            }
-            DataLoard();
+                MySqlConnection con2 = new MySqlConnection(connectionString);
 
+
+                try
+                {
+                    con2.Open();
+                    MySqlCommand cm = new MySqlCommand("update tbllogin Set  user_name = @user_name, password = @password, user_level = @user_level, full_name = @full_name where user_name = @user_name", con2);
+                    cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
+                    cm.Parameters.AddWithValue("@password", txtPassword.Text);
+                    cm.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
+                    cm.Parameters.AddWithValue("@full_name", txtFullName.Text);
+
+                    cm.ExecuteNonQuery();
+                    cm.Dispose();
+                    updatealert.Visible = true;
+                    //Response.Write("<script>alert('Data update successfully!')</script>");
+                    con2.Close();
+
+                }
+
+                catch (MySqlException ex)
+                {
+                    Response.Write("<script>alert(" + ex + ")</script>");
+                }
+                DataLoard();
+                txtboxclear();
+            }
+        }
+        protected void btndelete_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(txtUserName.Text))
+            {
+                warningalert.Visible = true;
+            }
+            else
+            {
+                MySqlConnection con3 = new MySqlConnection(connectionString);
+
+
+                try
+                {
+                    con3.Open();
+                    MySqlCommand cm = new MySqlCommand("DELETE FROM tbllogin WHERE user_name = @user_name", con3);
+                    cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
+                    
+
+                    cm.ExecuteNonQuery();
+                    cm.Dispose();
+                    deletealert.Visible = true;
+                    //Response.Write("<script>alert('Data update successfully!')</script>");
+                    con3.Close();
+
+                }
+
+                catch (MySqlException ex)
+                {
+                    Response.Write("<script>alert(" + ex + ")</script>");
+                }
+                DataLoard();
+                txtboxclear();
+            }
 
         }
 
         public void txtboxclear()
         {
-            txtFullName.Text = null;
-            txtPassword.Text = null;
-            txtUserName.Text = null;
-            txtFullName.Text = null;
+            txtFullName.Text = "";
+            txtPassword.Text = "";
+            txtUserName.Text = "";
+            txtFullName.Text = "";
 
 
 
         }
         public void DataLoard()
         {
+            con.Close();
             string cmd = "select full_name,user_name,user_level,password from tbllogin";
             MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
             DataTable dt = new DataTable();
@@ -150,7 +199,7 @@ namespace Crescent_POS
             //Bind the fetched data to gridview
             gvUsers.DataSource = dt;
             gvUsers.DataBind();
-
+           
         }
 
         protected void gvUsers_SelectedIndexChanged(object sender, EventArgs e)

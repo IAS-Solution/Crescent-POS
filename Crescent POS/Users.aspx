@@ -21,8 +21,62 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div><!-- /.content-header -->
-    
-
+    <div class="alert alert-success alert-dismissible" id="savealert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px; "> 
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                  Data inserted successfully!
+   </div>
+        <script>setTimeout(function() {
+    var alerts = document.getElementsByClassName("savealert");
+  
+    for( var i = 0; i < alerts.length; i++ ) {
+        alerts[i].style.display = "none";
+    }
+}, 2000); </script>
+       
+         <div class="alert alert-danger alert-dismissible" id="deletealert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                  Data delete successfully!
+                </div>
+         <div class="alert alert-warning alert-dismissible" id="warningalert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 User Name is Empty!
+                </div>
+          <div class="alert alert-warning alert-dismissible" id="wrningfullname" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please give the Full name to save!
+                </div>
+        <div class="alert alert-warning alert-dismissible" id="wrninguname" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please give a User Name to save!
+                </div>
+         <div class="alert alert-warning alert-dismissible" id="wrningpword" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please give a Password to save!
+                </div>
+         <div class="alert alert-warning alert-dismissible" id="wrningunamechk" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                The username already exist please select a new one!
+                </div>
+         <div class="alert alert-info alert-dismissible" id="updatealert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                 Data update successfully!
+                </div>
     <!-- Main content -->
       <div class="container-fluid">     
         <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
@@ -72,12 +126,13 @@
           </div><!-- /.card-body -->
           
           <div class="card-footer">  
-              <asp:Button ID="btnSave" runat="server" Class="btn btn-primary" Text="Save" OnClick="btnSave_Click"/>
+              <asp:Button ID="btnSave" runat="server" Class="btn btn-success" Text="Save" OnClick="btnSave_Click"/>
                <asp:Button ID="btnupdate" runat="server" Class="btn btn-primary" Text="Update" OnClick="btnupdate_Click"/>
+              <asp:Button ID="btndelete" runat="server" Class="btn btn-danger" Text="Delete" OnClick="btndelete_Click"/>
               <%--<button type="button" class="btn btn-primary">Primary</button>--%>
-              <button type="button" class="btn btn-secondary">Secondary</button>
+            <%--  <button type="button" class="btn btn-secondary">Secondary</button>
               <button type="button" class="btn btn-success">Success</button>
-              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-danger">Danger</button>--%>
           </div>
             
         </div><!-- /.card -->
