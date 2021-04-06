@@ -62,7 +62,9 @@
           </div>
           <!-- /.col -->
         </div>
+            
       </form>
+       
 
       <%--<div class="social-auth-links text-center mt-2 mb-3">
         <a href="#" class="btn btn-block btn-primary">
@@ -83,8 +85,14 @@
     </div>
     <!-- /.card-body -->
   </div>
+     
   <!-- /.card -->
 </div>
+    <div class="alert alert-danger alert-dismissible" id="errorlogin" runat="server"  Visible="false" >
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                 Incorrect User Name or Password!
+                </div>
 <!-- /.login-box -->
 
 <!-- jQuery -->

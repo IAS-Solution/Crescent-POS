@@ -27,13 +27,10 @@
                   <h5><i class="icon fas fa-check"></i> Alert!</h5>
                   Data inserted successfully!
    </div>
-        <script>setTimeout(function() {
-    var alerts = document.getElementsByClassName("savealert");
-  
-    for( var i = 0; i < alerts.length; i++ ) {
-        alerts[i].style.display = "none";
-    }
-}, 2000); </script>
+      
+
+
+    
        
          <div class="alert alert-danger alert-dismissible" id="deletealert" runat="server"  Visible="false" style="margin-left: 8px;
     margin-right: 8px;">
@@ -41,6 +38,8 @@
                   <h5><i class="icon fas fa-ban"></i> Alert!</h5>
                   Data delete successfully!
                 </div>
+
+        
          <div class="alert alert-warning alert-dismissible" id="warningalert" runat="server"  Visible="false" style="margin-left: 8px;
     margin-right: 8px;">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

@@ -28,11 +28,23 @@ namespace Crescent_POS
                 }
             }
             DataLoard();
-           
-        }
 
+        }
+        public void hidealert()
+        {
+            wrningfullname.Visible = false;
+            wrninguname.Visible = false;
+            wrningpword.Visible = false;
+            wrningunamechk.Visible = false;
+            savealert.Visible = false;
+            warningalert.Visible = false;
+            updatealert.Visible = false;
+            deletealert.Visible = false;
+        }
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            hidealert();
+
             try
             {
                 if (txtFullName.Text == "")
@@ -103,7 +115,7 @@ namespace Crescent_POS
         }
         protected void btnupdate_Click(object sender, EventArgs e)
         {
-
+            hidealert();
             if (string.IsNullOrWhiteSpace(txtUserName.Text))
             {
                 warningalert.Visible = true;
@@ -140,6 +152,7 @@ namespace Crescent_POS
         }
         protected void btndelete_Click(object sender, EventArgs e)
         {
+            hidealert();
 
             if (string.IsNullOrWhiteSpace(txtUserName.Text))
             {
@@ -204,6 +217,7 @@ namespace Crescent_POS
 
         protected void gvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            hidealert();
             txtFullName.Text = gvUsers.SelectedRow.Cells[1].Text;
             txtUserName.Text = gvUsers.SelectedRow.Cells[2].Text;
             ddlUserLevel.Text = gvUsers.SelectedRow.Cells[3].Text;

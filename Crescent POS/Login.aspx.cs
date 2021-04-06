@@ -46,8 +46,7 @@ namespace Crescent_POS
                 }
                 else
                 {
-                    string script="alert(\"Incorrect User Name Or Password!\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    errorlogin.Visible = true;
                 }
                
             }
