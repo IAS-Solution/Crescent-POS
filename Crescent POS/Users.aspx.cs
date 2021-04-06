@@ -28,6 +28,7 @@ namespace Crescent_POS
                 }
             }
             DataLoard();
+            
            
         }
 
@@ -221,7 +222,7 @@ namespace Crescent_POS
                     if (con != null && string.IsNullOrEmpty(message))
                     {
 
-                        string cmd = "select * from tblQuotationHeader where tbllogin like '" + txtuserid.Text + "%'";
+                        string cmd = "select * from tblQuotationHeader where tbllogin like '" + txtUserName.Text + "%'";
 
                         MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
                         DataTable dt = new DataTable();
