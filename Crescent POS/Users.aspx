@@ -147,13 +147,15 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 200px;">
                     <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
-                      <asp:TextBox ID="txtSearch" runat="server" Class="form-control float-right" placeholder="Search By User Name" OnTextChanged="txtSearch_TextChanged"></asp:TextBox>
+                      <asp:TextBox ID="txtSearch" runat="server" Class="form-control float-right" placeholder="Search By User Name" ></asp:TextBox>
 
-                    <%--<div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
+                    <div class="input-group-append">
+                      <button type="submit" id="Button1" runat="server" Class="btn btn-default" onserverclick="btnsrch_Click">
+                        <%--<asp:Button ID="Button1" runat="server" Class="btn btn-default" OnClick="btnsrch_Click">--%>
                         <i class="fas fa-search"></i>
-                      </button>
-                    </div>--%>
+                       </button>
+                     
+                    </div>
                   </div>
                 </div>
               </div><!-- /.card-header -->

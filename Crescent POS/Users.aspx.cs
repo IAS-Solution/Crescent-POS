@@ -226,7 +226,7 @@ namespace Crescent_POS
             txtPassword.Text = gvUsers.SelectedRow.Cells[4].Text;
         }
 
-        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        protected void btnsrch_Click(object sender, EventArgs e)
         {
             try
             {
@@ -237,7 +237,7 @@ namespace Crescent_POS
                     if (con != null && string.IsNullOrEmpty(message))
                     {
 
-                        string cmd = "select * from tbllogin where user_name like '" + txtUserName.Text + "%'";
+                        string cmd = "select * from tbllogin where user_name like '" + txtSearch.Text + "%'";
 
                         MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
                         DataTable dt = new DataTable();
