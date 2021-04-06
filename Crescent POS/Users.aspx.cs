@@ -19,6 +19,7 @@ namespace Crescent_POS
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            DataLoard();
             if (!Page.IsPostBack)
             {
                 if (Session["user_name"] == null)
@@ -98,6 +99,30 @@ namespace Crescent_POS
             {
 
             }
+        }
+
+        public void DataLoard()
+        {
+            string cmd = "select full_name,user_name,user_level,password from tbllogin";
+            MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            myAdapter.Fill(ds);
+            dt = ds.Tables[0];
+
+            //Bind the fetched data to gridview
+            gvUsers.DataSource = dt;
+            gvUsers.DataBind();
+
+        }
+
+        protected void gvUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtFullName.Text = gvUsers.SelectedRow.Cells[1].Text;
+            txtUserName.Text = gvUsers.SelectedRow.Cells[2].Text;
+            ddlUserLevel.Text = gvUsers.SelectedRow.Cells[3].Text;
+            txtPassword.Text = gvUsers.SelectedRow.Cells[4].Text;
         }
     }
 }

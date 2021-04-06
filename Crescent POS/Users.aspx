@@ -3,7 +3,8 @@
 
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" Class="content-wrapper">    
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" Class="content-wrapper">
+    <form runat="server">
     <div class="content-wrapper"><!--Content Wrapper. Contains page content-->   
     <div class="content-header"><!-- Content Header (Page header) -->
       <div class="container-fluid">
@@ -24,8 +25,7 @@
 
     <!-- Main content -->
       <div class="container-fluid">     
-        <div class="card card-default"><!-- SELECT2 EXAMPLE -->
-            <form runat="server">
+        <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
           <div class="card-header">
             <h3 class="card-title">Add Users</h3>
 
@@ -77,7 +77,7 @@
               <button type="button" class="btn btn-success">Success</button>
               <button type="button" class="btn btn-danger">Danger</button>
           </div>
-            </form>
+            
         </div><!-- /.card -->
         
 
@@ -90,7 +90,8 @@
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 200px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
+                      <asp:TextBox ID="txtSearch" runat="server" Class="form-control float-right" placeholder="Search"></asp:TextBox>
 
                     <div class="input-group-append">
                       <button type="submit" class="btn btn-default">
@@ -99,10 +100,18 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- /.card-header -->
+              </div><!-- /.card-header -->
+              
               <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+                  <asp:GridView ID="gvUsers" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true" OnSelectedIndexChanged="gvUsers_SelectedIndexChanged">
+                      <Columns>
+                          <asp:BoundField DataField="Full_name" HeaderText="Full Name" />
+                          <asp:BoundField DataField="user_name" HeaderText="User Name" />
+                          <asp:BoundField DataField="user_level" HeaderText="User Level" />
+                          <asp:BoundField DataField="password" HeaderText="Password" />
+                      </Columns>
+                  </asp:GridView>
+               <%-- <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -170,16 +179,17 @@
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                     </tr>
                   </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+                </table>--%>
+              </div> <!-- /.card-body -->
+             
+            </div><!-- /.card -->
+            
           </div>
-        </div>
-        <!-- /.row -->
+        </div><!-- /.row -->
+        
 
           
         </div><!--container-fluid-->
-        </div><!--/.content-wrapper--> 
+        </div><!--/.content-wrapper-->
+        </form>
     </asp:Content>
