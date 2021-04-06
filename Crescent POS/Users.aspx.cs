@@ -28,6 +28,8 @@ namespace Crescent_POS
                 }
             }
             DataLoard();
+            
+           
 
         }
         public void hidealert()
@@ -50,7 +52,7 @@ namespace Crescent_POS
                 if (txtFullName.Text == "")
                 {
                     wrningfullname.Visible = true;
-
+                    
                     return;
                 }
                 if (txtUserName.Text == "")
@@ -222,6 +224,42 @@ namespace Crescent_POS
             txtUserName.Text = gvUsers.SelectedRow.Cells[2].Text;
             ddlUserLevel.Text = gvUsers.SelectedRow.Cells[3].Text;
             txtPassword.Text = gvUsers.SelectedRow.Cells[4].Text;
+        }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string message = string.Empty;
+
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    if (con != null && string.IsNullOrEmpty(message))
+                    {
+
+                        string cmd = "select * from tblQuotationHeader where tbllogin like '" + txtUserName.Text + "%'";
+
+                        MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
+                        DataTable dt = new DataTable();
+                        DataSet ds = new DataSet();
+
+                        myAdapter.Fill(ds);
+
+                        dt = ds.Tables[0];
+
+                        //Bind the fetched data to gridview
+
+                        gvUsers.DataSource = dt;
+
+                        gvUsers.DataBind();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
