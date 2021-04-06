@@ -13,40 +13,49 @@ namespace Crescent_POS {
     public partial class Supplier {
         
         /// <summary>
-        /// txtFullName control.
+        /// Supplierid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFullName;
+        protected global::System.Web.UI.WebControls.TextBox Supplierid;
         
         /// <summary>
-        /// txtUserName control.
+        /// txtSupplierName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserName;
+        protected global::System.Web.UI.WebControls.TextBox txtSupplierName;
         
         /// <summary>
-        /// ddlUserLevel control.
+        /// txtMobileNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUserLevel;
+        protected global::System.Web.UI.WebControls.TextBox txtMobileNumber;
         
         /// <summary>
-        /// txtPassword control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        
+        /// <summary>
+        /// txtAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
         /// btnSave control.
@@ -94,12 +103,12 @@ namespace Crescent_POS {
         protected global::System.Web.UI.HtmlControls.HtmlButton Button1;
         
         /// <summary>
-        /// gvUsers control.
+        /// gvSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvUsers;
+        protected global::System.Web.UI.WebControls.GridView gvSupplier;
     }
 }
