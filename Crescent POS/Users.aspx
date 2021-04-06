@@ -21,7 +21,7 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div><!-- /.content-header -->
-    <div class="alert alert-success alert-dismissible" id="savealert" runat="server"  Visible="false" style="margin-left: 8px;
+    <div class="alert alert-success alert-dismissible" ID="savealert" runat="server"  Visible="false" style="margin-left: 8px;
     margin-right: 8px; "> 
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <h5><i class="icon fas fa-check"></i> Alert!</h5>
@@ -53,7 +53,7 @@
                   <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
                  Please give the Full name to save!
                 </div>
-        <div class="alert alert-warning alert-dismissible" id="wrninguname" runat="server"  Visible="false" style="margin-left: 8px;
+        <div class="alert alert-warning alert-dismissible" ID="wrninguname" runat="server"  Visible="false" style="margin-left: 8px;
     margin-right: 8px;">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
@@ -148,13 +148,13 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 200px;">
                     <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
-                      <asp:TextBox ID="txtSearch" runat="server" Class="form-control float-right" placeholder="Search"></asp:TextBox>
+                      <asp:TextBox ID="txtSearch" runat="server" Class="form-control float-right" placeholder="Search By User Name" OnTextChanged="txtSearch_TextChanged"></asp:TextBox>
 
-                    <div class="input-group-append">
+                    <%--<div class="input-group-append">
                       <button type="submit" class="btn btn-default">
                         <i class="fas fa-search"></i>
                       </button>
-                    </div>
+                    </div>--%>
                   </div>
                 </div>
               </div><!-- /.card-header -->
