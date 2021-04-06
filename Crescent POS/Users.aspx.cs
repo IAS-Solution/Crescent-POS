@@ -46,6 +46,7 @@ namespace Crescent_POS
                     Response.Redirect("Login.aspx");
                 }
             }
+            DataLoard();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
