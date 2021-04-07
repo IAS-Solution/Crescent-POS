@@ -88,7 +88,8 @@
               </button>
             </div>
           </div><!-- /.card-header -->      
-          <div class="card-body">
+         
+            <div class="card-body">
               
             <div class="row">
               <div class="col-md-6"> 
@@ -120,22 +121,21 @@
                     <asp:TextBox ID="txtPassword" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
                 </div><!-- /.form-group -->       
               </div><!-- /.col -->        
-            </div><!-- /.row -->
-            
+            </div><!-- /.row -->          
           </div><!-- /.card-body -->
           
           <div class="card-footer">  
-              <asp:Button ID="btnSave" runat="server" Class="btn btn-success" Text="Save" OnClick="btnSave_Click"/>
-               <asp:Button ID="btnupdate" runat="server" Class="btn btn-primary" Text="Update" OnClick="btnupdate_Click"/>
+              <asp:Button ID="btnSave" runat="server" Class="btn btn-primary" Text="Save" OnClick="btnSave_Click"/>
+               <asp:Button ID="btnupdate" runat="server" Class="btn btn-warning" Text="Update" OnClick="btnupdate_Click"/>
               <asp:Button ID="btndelete" runat="server" Class="btn btn-danger" Text="Delete" OnClick="btndelete_Click"/>
               <%--<button type="button" class="btn btn-primary">Primary</button>--%>
             <%--  <button type="button" class="btn btn-secondary">Secondary</button>
               <button type="button" class="btn btn-success">Success</button>
               <button type="button" class="btn btn-danger">Danger</button>--%>
-          </div>
-            
+          </div>            
         </div><!-- /.card -->
         
+
 
 
            <div class="row">
