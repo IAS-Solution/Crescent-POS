@@ -28,9 +28,29 @@ namespace Crescent_POS
                 }
             }
             DataLoard();
-            
-           
+            uidload();
 
+
+
+        }
+        public void uidload()
+        {
+
+            
+            
+            con.Open();
+            try
+            {
+                MySqlCommand command = new MySqlCommand("select max(user_id) from tbllogin", con);
+                string id = command.ExecuteScalar().ToString();
+                int uid = Convert.ToInt32(id);
+                int uuid = uid + 1;
+                txtuid.Value = uuid.ToString();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
         public void hidealert()
         {
@@ -94,9 +114,9 @@ namespace Crescent_POS
                 //data insert
                 MySqlConnection con1 = new MySqlConnection(connectionString);
                 con1.Open();
-                MySqlCommand cm = new MySqlCommand("Insert into tbllogin (user_name,password,user_level,full_name )  values( @user_name, @password, @user_level,@full_name)", con1);
+                MySqlCommand cm = new MySqlCommand("Insert into tbllogin (user_id,user_name,password,user_level,full_name )  values(@user_id ,@user_name, @password, @user_level,@full_name)", con1);
 
-
+                cm.Parameters.AddWithValue("@user_id", txtuid.Value);
                 cm.Parameters.AddWithValue("@user_name", txtUserName.Text);
                 cm.Parameters.AddWithValue("@password", txtPassword.Text);
                 cm.Parameters.AddWithValue("@user_level", ddlUserLevel.Text);
@@ -113,7 +133,8 @@ namespace Crescent_POS
             }
             txtboxclear();
             DataLoard();
-            
+            uidload();
+
         }
         protected void btnupdate_Click(object sender, EventArgs e)
         {
@@ -150,6 +171,7 @@ namespace Crescent_POS
                 }
                 DataLoard();
                 txtboxclear();
+                uidload();
             }
         }
         protected void btndelete_Click(object sender, EventArgs e)
@@ -186,6 +208,7 @@ namespace Crescent_POS
                 }
                 DataLoard();
                 txtboxclear();
+                uidload();
             }
 
         }
@@ -196,9 +219,6 @@ namespace Crescent_POS
             txtPassword.Text = "";
             txtUserName.Text = "";
             txtFullName.Text = "";
-
-
-
         }
         public void DataLoard()
         {

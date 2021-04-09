@@ -85,6 +85,24 @@ namespace Crescent_POS {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl updatealert;
         
         /// <summary>
+        /// uidlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uidlbl;
+        
+        /// <summary>
+        /// txtuid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtuid;
+        
+        /// <summary>
         /// txtFullName control.
         /// </summary>
         /// <remarks>

@@ -93,7 +93,10 @@
               
             <div class="row">
               <div class="col-md-6"> 
-
+                  <div class="form-group">
+                  <label id="uidlbl" runat="server">User ID</label>               
+                 <input type="text" runat="server" class="form-control" id="txtuid" placeholder="User ID" disabled>
+                </div>
                 <div class="form-group">
                   <label>Full Name</label>
                     <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
