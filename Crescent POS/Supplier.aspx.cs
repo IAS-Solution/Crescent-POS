@@ -93,7 +93,7 @@ namespace Crescent_POS
         public void hidealert()
         {
             wrningfullname.Visible = false;
-            wrninguname.Visible = false;
+            wrningaddress.Visible = false;
             wrningrepphone.Visible = false;
             wrningphone.Visible = false;
             wrningemail.Visible = false;
@@ -139,7 +139,7 @@ namespace Crescent_POS
                 }
                  if (txtaddress.Text == "")
                 {
-                    wrninguname.Visible = true;
+                    wrningaddress.Visible = true;
 
                     return;
                 }

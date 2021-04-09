@@ -251,7 +251,7 @@
            
              <li class="nav-item">
             <a href="Customer.aspx" class="nav-link">
-              <i class="nav-icon fas fa-cubes"></i>
+              <i class="fas fa-user-tie"></i>
               <p>
                 Customer
               </p>
