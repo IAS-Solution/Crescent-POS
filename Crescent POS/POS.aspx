@@ -12,12 +12,11 @@
             <%--<h1 class="m-0">POS</h1>--%>
               <p>Invoice No:</p>
               <p>Date :&nbsp;&nbsp;<asp:Label ID="lblDate" runat="server" Text="date"></asp:Label></p>
-              <p>Time:&nbsp;&nbsp;<asp:Label ID="lblTime" runat="server" Text="Time"></asp:Label></p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">POS</li>
+              <%--<li class="breadcrumb-item"><a href="#">Home</a></li>--%>
+              <li class="breadcrumb-item active">2,000.00</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,7 +26,8 @@
 
     <!-- Main content -->
       <div class="container-fluid">
-           <div class="row">
+          
+          <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
@@ -48,7 +48,7 @@
                 </div>
               </div><!-- /.card-header -->
               
-              <div class="card-body table-responsive p-0" style="height: 300px;">
+              <div class="card-body table-responsive p-0" style="height: 200px;">
                   <asp:GridView ID="gvUsers" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true">
                       <Columns>
                           <asp:BoundField DataField="Full_name" HeaderText="Full Name" />
@@ -63,6 +63,229 @@
             
           </div>
         </div><!-- /.row -->
+
+
+          <div class="row">
+          <div class="col-6">
+            <div class="card">
+              <div class="card-header">
+                  <asp:TextBox ID="TextBox1" runat="server" Class="form-control float-sm-right" placeholder="Search Customer Phone Number"  Width="250px"></asp:TextBox>
+                <h5 class="card-title">Customer Type</h5>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 200px;">
+                    <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
+                      
+
+                    <div class="input-group-append">
+                     <%-- <button type="submit" id="Button1" runat="server" Class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                       </button>--%>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.card-header -->
+              
+              <div class="card-body table-responsive p-0" style="height: 200px;">
+
+                   <div class="form-group">
+                  <label>Full Name</label>
+                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                  
+                  <div class="form-group">
+                  <label>Full Name</label>
+                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                  
+                  <div class="form-group">
+                  <label>Full Name</label>
+                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                  
+                  <div class="form-group">
+                  <label>Full Name</label>
+                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                  
+              </div> <!-- /.card-body -->
+             
+            </div><!-- /.card -->
+            
+          </div>
+
+              <div class="col-6">
+            <div class="card">
+              <div class="card-header">
+                  <%--<asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="Search Bar code Here"  Width="250px"></asp:TextBox>--%>
+                <h5 class="card-title">Settle Biil</h5>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 200px;">
+                    <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
+                      
+
+                    <div class="input-group-append">
+                     <%-- <button type="submit" id="Button1" runat="server" Class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                       </button>--%>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.card-header -->
+              
+              <div class="card-body table-responsive p-0" style="height: 200px;">
+                  <div class="row">
+              <div class="col-md-6"> 
+
+                <div class="form-group">
+                  <label>Full Name</label>
+                    <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                
+                <div class="form-group">
+                  <label>User Name</label>
+                    <asp:TextBox ID="txtUserName" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                  
+                  <div class="form-group">
+                  <label>User Name</label>
+                    <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+
+                  <div class="form-group">
+                  <label>User Name</label>
+                    <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                  
+              </div><!-- /.col -->
+
+                  
+            </div><!-- /.row -->
+                  
+              </div> <!-- /.card-body -->
+             
+            </div><!-- /.card -->
+            
+          </div>
+
+
+
+        </div><!-- /.row -->
+
+         <%-- <div class="float-sm-right">
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Cash</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <label class="form-check-label" for="inlineRadio2">Card</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                  <label for="inlineRadio3">Cheque</label>
+              </div>
+
+             <div class="row">
+                 <div class="col-sm-12">
+                     <ol class="float-sm-right form-inline">
+                         <label>Amount&nbsp;&nbsp;</label>
+                         <asp:TextBox ID="txtad" runat="server" Class="form-control"></asp:TextBox>
+                     </ol>
+                 </div>
+              </div>
+
+              <div class="row">
+                 <div class="col-sm-12">
+                     <ol class="float-sm-right form-inline">
+                         <label>Discount&nbsp;&nbsp;</label>
+                         <asp:TextBox ID="TextBox1" runat="server" Class="form-control"></asp:TextBox>
+                     </ol>
+                 </div>
+              </div>
+
+              <div class="row">
+                 <div class="col-sm-12">
+                     <ol class="float-sm-right form-inline">
+                         <label>Total Amount&nbsp;&nbsp;</label>
+                         <asp:TextBox ID="TextBox2" runat="server" Class="form-control"></asp:TextBox>
+                     </ol>
+                 </div>
+              </div>
+
+              <div class="row">
+                 <div class="col-sm-12">
+                     
+                     <ol class="float-sm-right form-inline">
+                         <label>Recieved Amount&nbsp;&nbsp;</label>
+                         <asp:TextBox ID="TextBox3" runat="server" Class="form-control"></asp:TextBox>
+                     </ol>
+                 </div>
+              </div>
+
+              <div class="row">
+                 <div class="col-sm-12">
+                     
+                     <ol class="float-sm-right form-inline">
+                         <label>Balance&nbsp;&nbsp;</label>
+                         <asp:TextBox ID="TextBox4" runat="server" Class="form-control"></asp:TextBox>
+                     </ol>
+                 </div>
+              </div>
+
+          </div>--%>
+
+         <%-- <div class="row">
+          <div class="col-sm-12">
+              
+            <ol class="float-sm-right">
+                <asp:TextBox ID="txtad" runat="server" Class="form-control"></asp:TextBox>
+
+            </ol>
+          </div><!-- /.col -->
+              </div>
+
+          <div class="row">
+          <div class="col-sm-12">
+            <ol class="float-sm-right">
+            
+                <label>Discount</label>
+                <asp:TextBox ID="TextBox1" runat="server" Class="form-control"></asp:TextBox>
+            </ol>
+          </div><!-- /.col -->
+              </div>
+
+          <div class="row">
+          <div class="col-sm-12">
+            <ol class="float-sm-right">
+                <label>Total Amount</label>
+            
+                <asp:TextBox ID="TextBox2" runat="server" Class="form-control"></asp:TextBox>
+            </ol>
+          </div><!-- /.col -->
+              </div>
+
+          <div class="row">
+          <div class="col-sm-12">
+            <ol class="float-sm-right">
+             
+                <label>Recevied Amount</label>
+                <asp:TextBox ID="TextBox3" runat="server" Class="form-control"></asp:TextBox>
+            </ol>
+          </div><!-- /.col -->
+              </div>
+
+          <div class="row">
+          <div class="col-sm-12">
+            <ol class="float-sm-right">
+         
+                <asp:TextBox ID="TextBox4" runat="server" Class="form-control"></asp:TextBox>
+            </ol>
+          </div><!-- /.col -->
+              </div>--%>
+
+      
        
           
         </div><!--container-fluid-->

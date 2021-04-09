@@ -24,7 +24,6 @@ namespace Crescent_POS
         public void ShowTime()
         {
             DateTime time = DateTime.Now;
-            lblTime.Text = time.ToString("HH: mm:ss");
         }
     }
 }

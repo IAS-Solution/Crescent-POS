@@ -27,9 +27,9 @@ namespace Crescent_POS
                
             }
 
-            else if (Session["user_level"].ToString() == "User")
+            else if (Session["user_level"].ToString() == "Cashier")
             {
-                
+                Response.Redirect("POS.aspx");
             }
             
         }
