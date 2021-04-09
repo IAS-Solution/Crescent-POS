@@ -49,7 +49,7 @@ namespace Crescent_POS
                 {
                     txtsupid.Text = "1";
                 }
-                else if (result <= 1)
+                else
                 {
                     con.Open();
                     try
@@ -87,6 +87,7 @@ namespace Crescent_POS
             txtemail.Text = "";
             txtrepname.Text = "";
             txtamt.Text = "";
+            ddlcreditperiod.SelectedIndex = 0;
 
         }
         public void hidealert()
@@ -121,6 +122,11 @@ namespace Crescent_POS
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if (cbCredi.Checked == false)
+            {
+                txtamt.Text = "0.00";
+                ddlcreditperiod.SelectedIndex = 0;
+            }
             hidealert();
 
             try
@@ -131,45 +137,49 @@ namespace Crescent_POS
 
                     return;
                 }
-                else if (txtaddress.Text == "")
+                 if (txtaddress.Text == "")
                 {
                     wrninguname.Visible = true;
 
                     return;
                 }
-                else if (txtrepphone.Text == "")
+                 if (txtrepphone.Text == "")
                 {
                     wrningrepphone.Visible = true;
 
                     return;
                 }
-                else if (txtphone.Text == "")
+                 if (txtphone.Text == "")
                 {
                     wrningphone.Visible = true;
 
                     return;
                 }
-                else if (txtemail.Text == "")
+                 if (txtemail.Text == "")
                 {
                     wrningemail.Visible = true;
 
                     return;
                 }
-                else if (txtrepname.Text == "")
+                 if (txtrepname.Text == "")
                 {
                     wrningrepname.Visible = true;
 
                     return;
                 }
-                else if (txtamt.Text == "")
+                 if (cbCredi.Checked==true)
                 {
-                    wrningamt.Visible = true;
+                     if (txtamt.Text == "")
+                    {
+                        wrningamt.Visible = true;
 
-                    return;
+                        return;
+                    }
                 }
+                
 
-                else
-                { //data insert
+                 
+                    //data insert
                     MySqlConnection con1 = new MySqlConnection(connectionString);
                     con1.Open();
                     MySqlCommand cm = new MySqlCommand("Insert into tblsupplier (SupplierID,SupplierName,MobileNumber,Email,Address,RepName,RepPhonenum,Creditamt,Creditperiod )  values(@SupplierID,@SupplierName,@MobileNumber,@Email,@Address,@RepName,@RepPhonenum,@Creditamt,@Creditperiod)", con1);
@@ -183,13 +193,13 @@ namespace Crescent_POS
                     cm.Parameters.AddWithValue("@RepPhonenum", txtrepphone.Text);
                     cm.Parameters.AddWithValue("@Creditamt", txtamt.Text);
                     cm.Parameters.AddWithValue("@Creditperiod", ddlcreditperiod.Text);
-                   
+
                     cm.ExecuteNonQuery();
                     cm.Dispose();
-                   
+
                     savealert.Visible = true;
                     con1.Close();
-                }
+                
                 
             }
             catch (MySqlException ex)

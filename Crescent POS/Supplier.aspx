@@ -175,7 +175,8 @@
                       <div class="form-group">
                           <label>Credit Period</label>
                           <asp:DropDownList ID="ddlcreditperiod" runat="server" Class="form-control">
-                            <asp:ListItem>1 Month</asp:ListItem>
+                            <asp:ListItem>None</asp:ListItem>
+                              <asp:ListItem>1 Month</asp:ListItem>
                             <asp:ListItem>2 Month</asp:ListItem>
                             <asp:ListItem>3 Month</asp:ListItem>
                             <asp:ListItem>4 Month</asp:ListItem>
