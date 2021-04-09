@@ -248,34 +248,7 @@
             </a>
           </li>
 
-            
-            <li class="nav-item">
-            <a href="Brand.aspx" class="nav-link">
-              <i class="nav-icon fa fa-cube"></i>
-              <p>
-                Brand
-              </p>
-            </a>
-          </li>
-
-           <li class="nav-item">
-            <a href="Category.aspx" class="nav-link">
-              <i class="nav-icon fas fa-bars"></i>
-              <p>
-                Category
-              </p>
-            </a>
-          </li>
-
-             <li class="nav-item">
-            <a href="Product.aspx" class="nav-link">
-              <i class="nav-icon fas fa-cubes"></i>
-              <p>
-                Product
-              </p>
-            </a>
-          </li>
-
+           
              <li class="nav-item">
             <a href="Customer.aspx" class="nav-link">
               <i class="nav-icon fas fa-cubes"></i>
@@ -285,7 +258,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
+<%--          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -502,7 +475,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li>--%>
           <li class="nav-header">CASHIER</li>
           <li class="nav-item">
             <a href="POS.aspx" class="nav-link">
@@ -513,7 +486,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+         <%-- <li class="nav-item">
             <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
@@ -877,7 +850,7 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li>--%>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
