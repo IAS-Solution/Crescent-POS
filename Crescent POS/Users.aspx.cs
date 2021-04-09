@@ -219,9 +219,6 @@ namespace Crescent_POS
             txtPassword.Text = "";
             txtUserName.Text = "";
             txtFullName.Text = "";
-
-
-
         }
         public void DataLoard()
         {
