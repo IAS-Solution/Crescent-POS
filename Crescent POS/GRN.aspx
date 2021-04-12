@@ -76,8 +76,46 @@
               <asp:Button ID="btndelete" runat="server" Class="btn btn-danger" Text="Delete"/>
           </div>            
         </div><!-- /.card -->
-       
-          
+
+
+            <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">User Table</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 200px;">
+                    <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
+                      <asp:TextBox ID="txtSearch" runat="server" Class="form-control float-right" placeholder="Search By User Name" ></asp:TextBox>
+
+                    <div class="input-group-append">
+                      <button type="submit" id="Button1" runat="server" Class="btn btn-default">
+                        <%--<asp:Button ID="Button1" runat="server" Class="btn btn-default" OnClick="btnsrch_Click">--%>
+                        <i class="fas fa-search"></i>
+                       </button>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.card-header -->
+              
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                  <asp:GridView ID="gvUsers" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true">
+                      <Columns>
+                          <asp:BoundField DataField="Full_name" HeaderText="Full Name" />
+                          <asp:BoundField DataField="user_name" HeaderText="User Name" />
+                          <asp:BoundField DataField="user_level" HeaderText="User Level" />
+                          <asp:BoundField DataField="password" HeaderText="Password" />
+                      </Columns>
+                  </asp:GridView>
+              </div> <!-- /.card-body -->
+             
+            </div><!-- /.card -->
+            
+          </div>
+        </div><!-- /.row -->
+      
         </div><!--container-fluid-->
         </div><!--/.content-wrapper-->
       </form> 

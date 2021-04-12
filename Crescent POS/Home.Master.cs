@@ -17,21 +17,21 @@ namespace Crescent_POS
             lblfullname.Text = (string)Session["full_name"];
             lblfullname.ForeColor = System.Drawing.Color.White;
 
-            //if (Session["user_level"].ToString() == "Admin")
-            //{
-               
-            //}
+            if (Session["user_level"].ToString() == "Admin")
+            {
 
-            //else if (Session["user_level"].ToString() == "Management")
-            //{
-               
-            //}
+            }
 
-            //else if (Session["user_level"].ToString() == "Cashier")
-            //{
-            //    Response.Redirect("POS.aspx");
-            //}
-            
+            else if (Session["user_level"].ToString() == "Management")
+            {
+
+            }
+
+            else if (Session["user_level"].ToString() == "Cashier")
+            {
+                Response.Redirect("POS.aspx");
+            }
+
         }
     }
 }

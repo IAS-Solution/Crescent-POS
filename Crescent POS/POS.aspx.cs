@@ -25,5 +25,10 @@ namespace Crescent_POS
         {
             DateTime time = DateTime.Now;
         }
+
+        protected void txtBarCodeSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

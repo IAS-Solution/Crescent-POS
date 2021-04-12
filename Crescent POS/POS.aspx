@@ -31,7 +31,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                  <asp:TextBox ID="txtSearch" runat="server" Class="form-control" placeholder="Search Bar code Here"  Width="250px"></asp:TextBox>
+                  <asp:TextBox ID="txtBarCodeSearch" runat="server" Class="form-control" placeholder="Search Bar code Here"  Width="250px" AutoPostBack="true" OnTextChanged="txtBarCodeSearch_TextChanged"></asp:TextBox>
                 <%--<h3 class="card-title">Product Table</h3>--%>
 
                 <div class="card-tools">
@@ -51,10 +51,10 @@
               <div class="card-body table-responsive p-0" style="height: 160px;">
                   <asp:GridView ID="gvUsers" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true">
                       <Columns>
-                          <asp:BoundField DataField="Full_name" HeaderText="Full Name" />
-                          <asp:BoundField DataField="user_name" HeaderText="User Name" />
-                          <asp:BoundField DataField="user_level" HeaderText="User Level" />
-                          <asp:BoundField DataField="password" HeaderText="Password" />
+                          <asp:BoundField DataField="Full_name" HeaderText="Description" />
+                          <asp:BoundField DataField="user_name" HeaderText="Qty" />
+                          <asp:BoundField DataField="user_level" HeaderText="Rate" />
+                          <asp:BoundField DataField="password" HeaderText="Amount" />
                       </Columns>
                   </asp:GridView>
               </div> <!-- /.card-body -->
@@ -88,13 +88,22 @@
               
               <div class="card-body table-responsive p-0" style="height: 200px;">
 
-                   <div class="form-group form-inline m-2">
-                  <label>Customer Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Name"></asp:TextBox>
-                </div><!-- /.form-group -->
+                   <div class="form-check form-check-inline m-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Guest</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Loyalty Coustomer</label>
+                      </div>
+
+                  <div class="form-group form-inline m-2">
+                      <label>Customer Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Name"></asp:TextBox>
+                  </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2">
-                  <label>Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                  <label>Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="ID"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
@@ -121,9 +130,20 @@
                 <h5 class="card-title">Settle Bill</h5>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 200px;">
+                  <div class="input-group input-group-sm" style="width: 250px;">
                     <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
-                      
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Cash</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Card</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio2">Cheque</label>
+                      </div>
 
                     <div class="input-group-append">
                      <%-- <button type="submit" id="Button1" runat="server" Class="btn btn-default">
@@ -142,7 +162,7 @@
                 </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2 ">
-                  <label>Discount %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                  <label>Discount %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <asp:DropDownList ID="ddlDiscount" runat="server" Class="form-control">
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>15</asp:ListItem>
@@ -151,12 +171,12 @@
                 </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2 ">
-                  <label>Total Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                  <label>Total Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2">
-                  <label>Recieved Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                  <label>Recieved Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <asp:TextBox ID="TextBox9" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
 
