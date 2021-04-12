@@ -257,6 +257,15 @@
             </a>
           </li>
 
+             <li class="nav-item">
+            <a href="Supplier Payment.aspx" class="nav-link">
+              <i class="nav-icon fas fa-running"></i>
+              <p>
+                Supplier Payment
+              </p>
+            </a>
+          </li>
+
            
             <%-- <li class="nav-item">
             <a href="Customer.aspx" class="nav-link">

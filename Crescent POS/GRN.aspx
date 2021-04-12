@@ -9,7 +9,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">GRN</h1>
+            <%--<h1 class="m-0">GRN</h1>--%>
+              <p>GRN ID :&nbsp;&nbsp;<asp:Label ID="lblGRNID" runat="server" Text=""></asp:Label></p>
+              <p>Date :&nbsp;&nbsp;<asp:Label ID="lblDate" runat="server" Text="date"></asp:Label></p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,7 +28,149 @@
       <div class="container-fluid">
            <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
           <div class="card-header">
-            <h3 class="card-title">Add GRN</h3>
+            <h3 class="card-title">Add Supplier</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div><!-- /.card-header -->      
+         
+            <div class="card-body">
+              
+            <div class="row">
+              <div class="col-md-6"> 
+
+                <div class="form-group">
+                  <label>Supplier ID</label>
+                    <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="ID"></asp:TextBox>
+                </div><!-- /.form-group -->
+                
+                <div class="form-group">
+                  <label>Company Name</label>
+                    <asp:TextBox ID="txtUserName" runat="server" Class="form-control" placeholder="Company Name"></asp:TextBox>
+                </div><!-- /.form-group -->   
+              </div><!-- /.col -->
+
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Rep Name</label>
+                    <asp:DropDownList ID="ddlUserLevel" runat="server" Class="form-control">
+                            <asp:ListItem>Admin</asp:ListItem>
+                            <asp:ListItem>Cashier</asp:ListItem>
+                            <asp:ListItem>Manager</asp:ListItem>
+                    </asp:DropDownList>
+                </div><!-- /.form-group -->
+                
+                <%--<div class="form-group">
+                  <label>Password</label>
+                    <asp:TextBox ID="txtPassword" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                </div><!-- /.form-group --> --%>      
+              </div><!-- /.col -->        
+            </div><!-- /.row -->          
+          </div><!-- /.card-body -->
+          
+          <%--<div class="card-footer">  
+              <asp:Button ID="btnSave" runat="server" Class="btn btn-primary" Text="Save" />
+               <asp:Button ID="btnupdate" runat="server" Class="btn btn-warning" Text="Update"/>
+              <asp:Button ID="btndelete" runat="server" Class="btn btn-danger" Text="Delete"/>
+          </div>--%>
+        </div><!-- /.card -->
+
+
+           <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
+          <div class="card-header">
+            <h3 class="card-title">Add Product</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div><!-- /.card-header -->      
+         
+            <div class="card-body">
+              
+                  <div class="row">
+
+              <div class="col-md-6"> 
+                <div class="form-group">
+                  <label>Product Code</label>
+                    <asp:TextBox ID="TextBox1" runat="server" Class="form-control" placeholder="Product Code"></asp:TextBox>
+                </div><!-- /.form-group -->
+                
+                <div class="form-group">
+                  <label>Description</label>
+                    <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="Description"></asp:TextBox>
+                </div><!-- /.form-group -->   
+              </div><!-- /.col -->
+
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Brand</label>
+                    <asp:DropDownList ID="DropDownList1" runat="server" Class="form-control">
+                            <asp:ListItem>Admin</asp:ListItem>
+                            <asp:ListItem>Cashier</asp:ListItem>
+                            <asp:ListItem>Manager</asp:ListItem>
+                    </asp:DropDownList>
+                </div><!-- /.form-group -->
+                
+                <div class="form-group">
+                  <label>Category</label>
+                    <asp:DropDownList ID="DropDownList3" runat="server" Class="form-control">
+                            <asp:ListItem>Admin</asp:ListItem>
+                            <asp:ListItem>Cashier</asp:ListItem>
+                            <asp:ListItem>Manager</asp:ListItem>
+                    </asp:DropDownList>
+                </div><!-- /.form-group -->       
+              </div><!-- /.col -->
+
+
+                 <div class="col-md-6"> 
+                     <div class="form-group">
+                  <label>Bar Code</label>
+                    <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="10012791289" Width="175px"></asp:TextBox>
+                </div><!-- /.form-group -->
+                <div class="form-group">
+                  <label>Cost Price</label>
+                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
+                </div><!-- /.form-group -->
+
+                     <div class="form-group">
+                  <label>QTY</label>
+                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="0" Width="175px"></asp:TextBox>
+                </div><!-- /.form-group -->
+
+                       <div class="form-group">
+                  <label>Total Price</label>
+                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
+                </div><!-- /.form-group -->
+                
+                <div class="form-group">
+                  <label>Selling Price</label>
+                    <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
+                </div><!-- /.form-group -->   
+              </div><!-- /.col -->
+                
+            </div><!-- /.row -->
+                      
+          </div><!-- /.card-body -->
+          
+          <div class="card-footer">  
+              <asp:Button ID="Button2" runat="server" Class="btn btn-primary" Text="Save" />
+               <asp:Button ID="Button3" runat="server" Class="btn btn-warning" Text="Update"/>
+              <asp:Button ID="Button4" runat="server" Class="btn btn-danger" Text="Delete"/>
+          </div>
+        </div><!-- /.card -->
+
+
+
+          <%-- <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
+          <div class="card-header">
+            <h3 class="card-title">Add Payment</h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -42,12 +186,12 @@
 
                 <div class="form-group">
                   <label>Full Name</label>
-                    <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
                 </div><!-- /.form-group -->
                 
                 <div class="form-group">
                   <label>User Name</label>
-                    <asp:TextBox ID="txtUserName" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
                 </div><!-- /.form-group -->   
               </div><!-- /.col -->
 
@@ -55,7 +199,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>User Level</label>
-                    <asp:DropDownList ID="ddlUserLevel" runat="server" Class="form-control">
+                    <asp:DropDownList ID="DropDownList2" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
                             <asp:ListItem>Manager</asp:ListItem>
@@ -64,25 +208,26 @@
                 
                 <div class="form-group">
                   <label>Password</label>
-                    <asp:TextBox ID="txtPassword" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
                 </div><!-- /.form-group -->       
               </div><!-- /.col -->        
             </div><!-- /.row -->          
           </div><!-- /.card-body -->
           
           <div class="card-footer">  
-              <asp:Button ID="btnSave" runat="server" Class="btn btn-primary" Text="Save" />
-               <asp:Button ID="btnupdate" runat="server" Class="btn btn-warning" Text="Update"/>
-              <asp:Button ID="btndelete" runat="server" Class="btn btn-danger" Text="Delete"/>
-          </div>            
-        </div><!-- /.card -->
+              <asp:Button ID="Button5" runat="server" Class="btn btn-primary" Text="Save" />
+               <asp:Button ID="Button6" runat="server" Class="btn btn-warning" Text="Update"/>
+              <asp:Button ID="Button7" runat="server" Class="btn btn-danger" Text="Delete"/>
+          </div>
+        </div><!-- /.card -->--%>
+
 
 
             <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">User Table</h3>
+                <h3 class="card-title">GRN Table</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 200px;">

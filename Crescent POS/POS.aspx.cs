@@ -12,7 +12,8 @@ namespace Crescent_POS
         protected void Page_Load(object sender, EventArgs e)
         {
             Showdate();
-            ShowTime();
+            //ShowTime();
+            txtBarCodeSearch.Focus();
         }
 
         public void Showdate()
