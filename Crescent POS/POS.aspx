@@ -48,7 +48,7 @@
                 </div>
               </div><!-- /.card-header -->
               
-              <div class="card-body table-responsive p-0" style="height: 200px;">
+              <div class="card-body table-responsive p-0" style="height: 160px;">
                   <asp:GridView ID="gvUsers" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true">
                       <Columns>
                           <asp:BoundField DataField="Full_name" HeaderText="Full Name" />
@@ -69,11 +69,11 @@
           <div class="col-6">
             <div class="card">
               <div class="card-header">
-                  <asp:TextBox ID="TextBox1" runat="server" Class="form-control float-sm-right" placeholder="Search Customer Phone Number"  Width="250px"></asp:TextBox>
-                <h5 class="card-title">Customer Type</h5>
+                  <asp:TextBox ID="TextBox1" runat="server" Class="form-control float-sm-right" placeholder="Search Customer Phone Number"  Width="260px"></asp:TextBox>
+                  <h5 class="card-title">Customer Type</h5>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 200px;">
+                  <div class="input-group input-group-sm" style="width: 210px;">
                     <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
                       
 
@@ -88,25 +88,25 @@
               
               <div class="card-body table-responsive p-0" style="height: 200px;">
 
-                   <div class="form-group">
-                  <label>Full Name</label>
-                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                   <div class="form-group form-inline m-2">
+                  <label>Customer Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Name"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
-                  <div class="form-group">
-                  <label>Full Name</label>
-                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                  <div class="form-group form-inline m-2">
+                  <label>Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="ID"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
-                  <div class="form-group">
-                  <label>Full Name</label>
-                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
+                  <div class="form-group form-inline m-2">
+                  <label>Previou Receivable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
-                  <div class="form-group">
+                 <%-- <div class="form-group form-inline m-2">
                   <label>Full Name</label>
                     <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
-                </div><!-- /.form-group -->
+                </div><!-- /.form-group -->--%>
                   
               </div> <!-- /.card-body -->
              
@@ -118,7 +118,7 @@
             <div class="card">
               <div class="card-header">
                   <%--<asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="Search Bar code Here"  Width="250px"></asp:TextBox>--%>
-                <h5 class="card-title">Settle Biil</h5>
+                <h5 class="card-title">Settle Bill</h5>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 200px;">
@@ -134,34 +134,37 @@
                 </div>
               </div><!-- /.card-header -->
               
-              <div class="card-body table-responsive p-0" style="height: 200px;">
-                  <div class="row">
-              <div class="col-md-6"> 
-
-                <div class="form-group">
-                  <label>Full Name</label>
-                    <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
-                </div><!-- /.form-group -->
-                
-                <div class="form-group">
-                  <label>User Name</label>
-                    <asp:TextBox ID="txtUserName" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
+              <div class="card-body table-responsive p-0" style="height: 240px;">
+                  
+                   <div class="form-group form-inline m-2 ">
+                  <label>Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
-                  <div class="form-group">
-                  <label>User Name</label>
-                    <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
-                </div><!-- /.form-group -->
-
-                  <div class="form-group">
-                  <label>User Name</label>
-                    <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
+                  <div class="form-group form-inline m-2 ">
+                  <label>Discount %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:DropDownList ID="ddlDiscount" runat="server" Class="form-control">
+                            <asp:ListItem>10</asp:ListItem>
+                            <asp:ListItem>15</asp:ListItem>
+                            <asp:ListItem>20</asp:ListItem>
+                    </asp:DropDownList>
                 </div><!-- /.form-group -->
                   
-              </div><!-- /.col -->
-
+                  <div class="form-group form-inline m-2 ">
+                  <label>Total Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                </div><!-- /.form-group -->
                   
-            </div><!-- /.row -->
+                  <div class="form-group form-inline m-2">
+                  <label>Recieved Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="TextBox9" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                </div><!-- /.form-group -->
+
+                  <div class="form-group form-inline m-2">
+                  <label>Balance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                      <asp:Button id="btn1" runat="server" Class="btn btn-primary ml-5" Text="Settle Bill"/>
+                </div><!-- /.form-group -->
                   
               </div> <!-- /.card-body -->
              
