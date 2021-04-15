@@ -82,7 +82,23 @@
                 <div class="form-group">
                   <label>Password</label>
                     <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
-                </div><!-- /.form-group -->       
+                </div><!-- /.form-group -->
+                  
+                  <div class="form-group">
+                  <label>Password</label>
+                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                </div><!-- /.form-group --> 
+
+                  <div class="form-group">
+                  <label>Password</label>
+                    <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                </div><!-- /.form-group --> 
+
+                  <div class="form-group">
+                  <label>Password</label>
+                    <asp:TextBox ID="TextBox9" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                </div><!-- /.form-group --> 
+                  
               </div><!-- /.col -->        
             </div><!-- /.row -->          
           </div><!-- /.card-body -->

@@ -69,7 +69,7 @@
           <div class="col-6">
             <div class="card">
               <div class="card-header">
-                  <asp:TextBox ID="TextBox1" runat="server" Class="form-control float-sm-right" placeholder="Search Customer Phone Number"  Width="260px"></asp:TextBox>
+                  <asp:TextBox ID="txtPhoneSearch" runat="server" Class="form-control float-sm-right" placeholder="Search Customer Phone Number" AutoPostBack="true"  Width="260px" OnTextChanged="txtPhoneSearch_TextChanged"></asp:TextBox>
                   <h5 class="card-title">Customer Type</h5>
 
                 <div class="card-tools">
@@ -89,27 +89,27 @@
               <div class="card-body table-responsive p-0" style="height: 200px;">
 
                    <div class="form-check form-check-inline m-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdGuest" value="option1"  runat="server">
                           <label class="form-check-label" for="inlineRadio1">Guest</label>
                       </div>
                       <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdLoyalty" value="option2" runat="server">
                           <label class="form-check-label" for="inlineRadio2">Loyalty Coustomer</label>
                       </div>
 
                   <div class="form-group form-inline m-2">
                       <label>Customer Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                      <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Name"></asp:TextBox>
+                      <asp:TextBox ID="txtCustomerName" runat="server" Class="form-control" placeholder="Name"></asp:TextBox>
                   </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2">
                   <label>Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="ID"></asp:TextBox>
+                    <asp:TextBox ID="txtCustomerID" runat="server" Class="form-control" placeholder="ID"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2">
-                  <label>Previou Receivable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                  <label>Previous Receivable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <asp:TextBox ID="txtPreReceivable" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
                  <%-- <div class="form-group form-inline m-2">

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace Crescent_POS
 {
@@ -17,8 +18,18 @@ namespace Crescent_POS
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!Page.IsPostBack)
+            {
+                if (Session["user_name"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+            }
+
             GRNIDLoard();
             Showdate();
+            LoadSupplierID();
         }
 
         public void Showdate()
@@ -37,7 +48,7 @@ namespace Crescent_POS
                 MySqlCommand com = new MySqlCommand();
 
                 com.Connection = conn;
-                com.CommandText = "SELECT COUNT(*) from tblsupplier";
+                com.CommandText = "SELECT COUNT(*) from tblgrn";
 
                 int result = int.Parse(com.ExecuteScalar().ToString());
                 conn.Close();
@@ -50,10 +61,10 @@ namespace Crescent_POS
                     con.Open();
                     try
                     {
-                        MySqlCommand command = new MySqlCommand("select max(SupplierID) from tblsupplier", con);
+                        MySqlCommand command = new MySqlCommand("select max(grnID) from tblgrn", con);
                         string id = command.ExecuteScalar().ToString();
                         int uid = Convert.ToInt32(id);
-                        int uuid = uid + 1;
+                        int uuid = uid + 1 ;
                         lblGRNID.Text = uuid.ToString();
                     }
                     catch (Exception)
@@ -73,6 +84,30 @@ namespace Crescent_POS
 
             }
 
+        }
+
+        protected void txtQty_TextChanged(object sender, EventArgs e)
+        {
+            decimal val1 = decimal.Parse(txtCostPrice.Text);
+            decimal val2 = decimal.Parse(txtQty.Text);
+            decimal sum = val1 * val2;
+            txtTotalPrice.Text = sum.ToString("#,#00.00");
+        }
+
+        public void LoadSupplierID()
+        {
+            con.Open();
+
+            MySqlCommand cmd = new MySqlCommand("select * from tblSupplier", con);
+            // table name   
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);  // fill dataset  
+            ddlSupplierID.DataTextField = ds.Tables[0].Columns["SupplierID"].ToString(); // text field name of table dispalyed in dropdown       
+            ddlSupplierID.DataValueField = ds.Tables[0].Columns["SupplierID"].ToString();
+            // to retrive specific  textfield name   
+            ddlSupplierID.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
+            ddlSupplierID.DataBind();  //binding dropdownlist  
         }
     }
 }

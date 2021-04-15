@@ -44,7 +44,8 @@
 
                 <div class="form-group">
                   <label>Supplier ID</label>
-                    <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="ID"></asp:TextBox>
+                    <asp:DropDownList ID="ddlSupplierID" runat="server" Class="form-control">
+                    </asp:DropDownList>
                 </div><!-- /.form-group -->
                 
                 <div class="form-group">
@@ -95,21 +96,24 @@
               
                   <div class="row">
 
-              <div class="col-md-6"> 
+              <div class="col-md-3"> 
                 <div class="form-group">
                   <label>Product Code</label>
                     <asp:TextBox ID="TextBox1" runat="server" Class="form-control" placeholder="Product Code"></asp:TextBox>
                 </div><!-- /.form-group -->
-                
-                <div class="form-group">
-                  <label>Description</label>
-                    <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="Description"></asp:TextBox>
-                </div><!-- /.form-group -->   
               </div><!-- /.col -->
 
-              
-              <div class="col-md-6">
-                <div class="form-group">
+
+                      <div class="col-md-3">
+                          <div class="form-group">
+                  <label>Bar Code</label>
+                    <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="10012791289"></asp:TextBox>
+                </div><!-- /.form-group -->
+              </div><!-- /.col -->
+
+
+                      <div class="col-md-3">
+                          <div class="form-group">
                   <label>Brand</label>
                     <asp:DropDownList ID="DropDownList1" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
@@ -117,50 +121,67 @@
                             <asp:ListItem>Manager</asp:ListItem>
                     </asp:DropDownList>
                 </div><!-- /.form-group -->
-                
-                <div class="form-group">
+                      </div><!-- /.col -->
+
+                        <div class="col-md-3">
+                         <div class="form-group">
                   <label>Category</label>
                     <asp:DropDownList ID="DropDownList3" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
                             <asp:ListItem>Manager</asp:ListItem>
                     </asp:DropDownList>
-                </div><!-- /.form-group -->       
+                </div><!-- /.form-group -->
+                      </div><!-- /.col -->
+
+
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label>Description</label>
+                              <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="Description"></asp:TextBox>
+                          </div>
+                          <!-- /.form-group -->
+                      </div><!-- /.col -->
+
+              
+              <div class="col-md-3">
+                     <div class="form-group">
+                  <label>Cost Price</label>
+                    <asp:TextBox ID="txtCostPrice" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
+                </div><!-- /.form-group --> 
               </div><!-- /.col -->
 
-
-                 <div class="col-md-6"> 
-                     <div class="form-group">
-                  <label>Bar Code</label>
-                    <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="10012791289" Width="175px"></asp:TextBox>
-                </div><!-- /.form-group -->
-                <div class="form-group">
-                  <label>Cost Price</label>
-                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
-                </div><!-- /.form-group -->
-
-                     <div class="form-group">
+                      <div class="col-md-3">
+                       <div class="form-group">
                   <label>QTY</label>
-                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="0" Width="175px"></asp:TextBox>
+                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number" OnTextChanged="txtQty_TextChanged" AutoPostBack="true"></asp:TextBox>
                 </div><!-- /.form-group -->
+              </div><!-- /.col -->
 
+                      <div class="col-md-3">
                        <div class="form-group">
                   <label>Total Price</label>
-                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
+                    <asp:TextBox ID="txtTotalPrice" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
                 </div><!-- /.form-group -->
-                
-                <div class="form-group">
+              </div><!-- /.col -->
+
+                      <div class="col-md-3">
+                      <div class="form-group">
                   <label>Selling Price</label>
                     <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
-                </div><!-- /.form-group -->   
+                </div><!-- /.form-group --> 
               </div><!-- /.col -->
+
+
+                <%-- <div class="col-md-3">    
+              </div><!-- /.col -->--%>
                 
             </div><!-- /.row -->
                       
           </div><!-- /.card-body -->
           
           <div class="card-footer">  
-              <asp:Button ID="Button2" runat="server" Class="btn btn-primary" Text="Save" />
+              <asp:Button ID="Button2" runat="server" Class="btn btn-primary" Text="ADD" />
                <asp:Button ID="Button3" runat="server" Class="btn btn-warning" Text="Update"/>
               <asp:Button ID="Button4" runat="server" Class="btn btn-danger" Text="Delete"/>
           </div>

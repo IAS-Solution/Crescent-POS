@@ -32,9 +32,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <%--<div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/icons8-cash-register-96.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  </div>--%>
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -231,12 +231,33 @@
           </li>
 
            <li class="nav-item">
-            <a href="Supplier.aspx" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-tie"></i>
               <p>
                 Supplier
+                  <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+               <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="Supplier.aspx" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Supplier</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="Supplier Payment.aspx" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Supplier Payment</p>
+                </a>
+              </li>
+              <%--<li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Read</p>
+                </a>
+              </li>--%>
+            </ul>
           </li>
 
             <li class="nav-item">
@@ -257,14 +278,14 @@
             </a>
           </li>
 
-             <li class="nav-item">
+             <%--<li class="nav-item">
             <a href="Supplier Payment.aspx" class="nav-link">
               <i class="nav-icon fas fa-running"></i>
               <p>
                 Supplier Payment
               </p>
             </a>
-          </li>
+          </li>--%>
 
            
             <%-- <li class="nav-item">
