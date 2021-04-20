@@ -86,5 +86,13 @@ namespace Crescent_POS
 
             }
         }
+
+        protected void ddlDiscount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            decimal amount = decimal.Parse(txtAmount.Text);
+            decimal discount = decimal.Parse(ddlDiscount.Text);
+            decimal sum = ((100 - discount) * amount)/100;
+            txtTotalAmount.Text = sum.ToString();
+        }
     }
 }

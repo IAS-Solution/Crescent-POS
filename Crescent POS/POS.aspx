@@ -158,12 +158,13 @@
                   
                    <div class="form-group form-inline m-2 ">
                   <label>Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                    <asp:TextBox ID="txtAmount" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2 ">
                   <label>Discount %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:DropDownList ID="ddlDiscount" runat="server" Class="form-control">
+                    <asp:DropDownList ID="ddlDiscount" runat="server" Class="form-control" OnSelectedIndexChanged="ddlDiscount_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:ListItem>0</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>15</asp:ListItem>
                             <asp:ListItem>20</asp:ListItem>
@@ -172,17 +173,17 @@
                   
                   <div class="form-group form-inline m-2 ">
                   <label>Total Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                    <asp:TextBox ID="txtTotalAmount" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
                   <div class="form-group form-inline m-2">
                   <label>Recieved Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="TextBox9" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                    <asp:TextBox ID="txtRAmount" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
 
                   <div class="form-group form-inline m-2">
                   <label>Balance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                    <asp:TextBox ID="txtBalance" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                       <asp:Button id="btn1" runat="server" Class="btn btn-primary ml-5" Text="Settle Bill"/>
                 </div><!-- /.form-group -->
                   

@@ -94,13 +94,13 @@ namespace Crescent_POS {
         protected global::System.Web.UI.WebControls.TextBox txtPreReceivable;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtAmount;
         
         /// <summary>
         /// ddlDiscount control.
@@ -112,31 +112,31 @@ namespace Crescent_POS {
         protected global::System.Web.UI.WebControls.DropDownList ddlDiscount;
         
         /// <summary>
-        /// TextBox8 control.
+        /// txtTotalAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.TextBox txtTotalAmount;
         
         /// <summary>
-        /// TextBox9 control.
+        /// txtRAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.TextBox txtRAmount;
         
         /// <summary>
-        /// TextBox7 control.
+        /// txtBalance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtBalance;
         
         /// <summary>
         /// btn1 control.

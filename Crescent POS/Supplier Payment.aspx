@@ -52,17 +52,17 @@
                 </div><!-- /.form-group --> 
 
                    <div class="form-group">
-                  <label>GRN ID</label>
+                  <label>Date</label>
                     <asp:TextBox ID="TextBox1" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
                 </div><!-- /.form-group --> 
 
                    <div class="form-group">
-                  <label>GRN ID</label>
+                  <label>Supplier ID</label>
                     <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
                 </div><!-- /.form-group --> 
 
                    <div class="form-group">
-                  <label>GRN ID</label>
+                  <label>Supplier Name</label>
                     <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
                 </div><!-- /.form-group --> 
                   
@@ -71,7 +71,7 @@
               
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Date</label>
+                  <label>Total Amount</label>
                     <asp:DropDownList ID="DropDownList2" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
@@ -80,23 +80,23 @@
                 </div><!-- /.form-group -->
                 
                 <div class="form-group">
-                  <label>Password</label>
-                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                  <label>Earlier payments</label>
+                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
                   <div class="form-group">
-                  <label>Password</label>
-                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                  <label>Amount to be paid</label>
+                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group --> 
 
                   <div class="form-group">
-                  <label>Password</label>
-                    <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                  <label>Paying Amount</label>
+                    <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group --> 
 
                   <div class="form-group">
-                  <label>Password</label>
-                    <asp:TextBox ID="TextBox9" runat="server" Class="form-control" placeholder="Password"></asp:TextBox>
+                  <label>Balance</label>
+                    <asp:TextBox ID="TextBox9" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                 </div><!-- /.form-group --> 
                   
               </div><!-- /.col -->        
