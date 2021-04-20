@@ -14,7 +14,8 @@ namespace Crescent_POS
     {
         public static string connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         MySqlConnection con = new MySqlConnection(connectionString);
-        MySqlDataReader rdr;
+        DataTable dt = new DataTable();
+        MySqlCommand cmd = new MySqlCommand();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,13 +27,37 @@ namespace Crescent_POS
                     Response.Redirect("Login.aspx");
                 }
             }
+            if (!IsPostBack)
+            {
+                if (ViewState["Details"] == null)
+                {
+                   
 
+                    dt.Columns.Add("Product ID");
+                    dt.Columns.Add("Barcode");
+                    dt.Columns.Add("Brand");
+
+                    dt.Columns.Add("Category");
+                    dt.Columns.Add("Description");
+                    dt.Columns.Add("Cost Price");
+
+                    dt.Columns.Add("Qty");
+                    dt.Columns.Add("Total Price");
+
+                    dt.Columns.Add("Selling Price");
+                    dt.Columns.Add("Grn ID");
+                    ViewState["Details"] = dt;
+                }
+            }
             GRNIDLoard();
             Showdate();
             LoadSupplierID();
-        }
+            PIDLoard();
 
-        public void Showdate()
+
+        }
+       
+    public void Showdate()
         {
             DateTime date = DateTime.Now;
             lblDate.Text = date.ToString("MM/dd/yyyy");
@@ -85,14 +110,185 @@ namespace Crescent_POS
             }
 
         }
-
-        protected void txtQty_TextChanged(object sender, EventArgs e)
+        public void PIDLoard()
         {
-            decimal val1 = decimal.Parse(txtCostPrice.Text);
-            decimal val2 = decimal.Parse(txtQty.Text);
-            decimal sum = val1 * val2;
-            txtTotalPrice.Text = sum.ToString("#,#00.00");
+
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+                MySqlCommand com = new MySqlCommand();
+
+                com.Connection = conn;
+                com.CommandText = "SELECT COUNT(*) from grnproduct";
+
+                int result = int.Parse(com.ExecuteScalar().ToString());
+                conn.Close();
+                if (result == 0)
+                {
+                    txtprdctid.Text = "1";
+                }
+                else
+                {
+                    MySqlConnection conn1 = new MySqlConnection(connectionString);
+                    conn1.Open();
+                    try
+                    {
+                        MySqlCommand command = new MySqlCommand("select max(productid) from grnproduct", conn1);
+                        string id = command.ExecuteScalar().ToString();
+                        int uid = Convert.ToInt32(id);
+                        int uuid = uid + 1;
+                        txtprdctid.Text = uuid.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        return;
+                    }
+                    finally
+                    {
+                        conn1.Close();
+                    }
+                }
+
+            }
+
+            finally
+            {
+
+            }
+
         }
+        public void hidealert()
+        {
+            warningalert.Visible = false;
+            wrningdes.Visible = false;
+            wrningtxtCostPrice.Visible = false;
+            wrningtxtQty.Visible = false;
+            wrningtxtTotalPrice.Visible = false;
+            wrningbarcodedup.Visible = false;
+            wrningamt.Visible = false;
+            savealert.Visible = false;
+            warningalert.Visible = false;
+            updatealert.Visible = false;
+            deletealert.Visible = false;
+            wrningex.Visible = false;
+        }
+        public void txtboxclear()
+        {
+            txtbarcode.Text = "";
+            txtdes.Text = "";
+            txtCostPrice.Text = "";
+            txtQty.Text = "";
+            txtTotalPrice.Text = "";
+            TextBox8.Text = "";
+            DropDownList1.SelectedIndex = 0;
+            DropDownList3.SelectedIndex = 0;
+
+        }
+
+        protected void addbtn_Click(object sender, EventArgs e)
+        {
+            hidealert();
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(this.txtbarcode.Text))
+
+                {
+                    DataTable dt = (DataTable)ViewState["Details"];
+                    bool ifExist = false;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (dr["Barcode"].ToString() == txtbarcode.Text.Trim())
+                        {
+                            ifExist = true;
+                        }
+
+                    }
+                    if (!ifExist)
+                    {
+                    }
+                    else
+                    {
+                        wrningbarcodedup.Visible = true;
+                    }
+
+
+
+                } 
+                   
+
+                if (txtbarcode.Text == "")
+                {
+                    warningalert.Visible = true;
+
+                    return;
+                }
+                if (txtdes.Text == "")
+                {
+                    wrningdes.Visible = true;
+
+                    return;
+                }
+                if (txtCostPrice.Text == "")
+                {
+                    wrningtxtCostPrice.Visible = true;
+
+                    return;
+                }
+                if (txtQty.Text == "")
+                {
+                    wrningtxtQty.Visible = true;
+
+                    return;
+                }
+                if (txtTotalPrice.Text == "")
+                {
+                    wrningtxtTotalPrice.Visible = true;
+
+                    return;
+                }
+                if (TextBox8.Text == "")
+                {
+                    wrningamt.Visible = true;
+
+                    return;
+                }
+
+                dt = (DataTable)ViewState["Details"];
+                dt.Rows.Add(txtprdctid.Text, txtbarcode.Text, DropDownList1.Text, DropDownList3.Text, txtdes.Text, txtCostPrice.Text, txtQty.Text, txtTotalPrice.Text, TextBox8.Text, lblGRNID.Text);
+                ViewState["Details"] = dt;
+                prdctgv.DataSource = dt;
+                prdctgv.EmptyDataText = "Product ID";
+                prdctgv.EmptyDataText = "Barcode";
+                prdctgv.EmptyDataText = "Brand";
+                prdctgv.EmptyDataText = "Category";
+                prdctgv.EmptyDataText = "Description";
+                prdctgv.EmptyDataText = "Cost Price";
+                prdctgv.EmptyDataText = "Qty";
+                prdctgv.EmptyDataText = "Total Price";
+                prdctgv.EmptyDataText = "Selling Price";
+                prdctgv.EmptyDataText = "Grn ID";
+                prdctgv.DataBind();
+
+                int pid = int.Parse(txtprdctid.Text);
+                int npid = pid + 1;
+                txtprdctid.Text = npid.ToString();
+                txtboxclear();
+            }
+            catch(Exception ex)
+            {
+                lblex.Text = ex.Message;
+                wrningex.Visible = true;
+            }
+        }
+        //protected void txtQty_TextChanged(object sender, EventArgs e)
+        //{
+        //    decimal val1 = decimal.Parse(txtCostPrice.Text);
+        //    decimal val2 = decimal.Parse(txtQty.Text);
+        //    decimal sum = val1 * val2;
+        //    txtTotalPrice.Text = sum.ToString("#,#00.00");
+        //}
 
         public void LoadSupplierID()
         {

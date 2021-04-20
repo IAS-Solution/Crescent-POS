@@ -58,7 +58,7 @@
     margin-right: 8px;">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
-                 Please Mobile Number to save!
+                 Please Give a Mobile Number to save!
                 </div>
         
          <div class="alert alert-warning alert-dismissible" id="wrningemail" runat="server"  Visible="false" style="margin-left: 8px;
