@@ -33,7 +33,7 @@ namespace Crescent_POS
             {
                 if (ViewState["Details"] == null)
                 {
-                   
+
 
                     dt.Columns.Add("Product ID");
                     dt.Columns.Add("Barcode");
@@ -53,7 +53,7 @@ namespace Crescent_POS
             }
             GRNIDLoard();
             Showdate();
-            
+
             PIDLoard();
             DataLoardgrn();
 
@@ -203,34 +203,34 @@ namespace Crescent_POS
 
             try
             {
-                
 
-                 if (txtbarcode.Text == "")
+
+                if (txtbarcode.Text == "")
                 {
                     warningalert.Visible = true;
 
                     return;
                 }
-                 if (txtdes.Text == "")
+                if (txtdes.Text == "")
                 {
                     wrningdes.Visible = true;
 
                     return;
                 }
-                 if (txtCostPrice.Text == "")
+                if (txtCostPrice.Text == "")
                 {
                     wrningtxtCostPrice.Visible = true;
 
                     return;
                 }
-                 if (txtQty.Text == "")
+                if (txtQty.Text == "")
                 {
                     wrningtxtQty.Visible = true;
 
                     return;
                 }
 
-                 if (TextBox8.Text == "")
+                if (TextBox8.Text == "")
                 {
                     wrningamt.Visible = true;
 
@@ -284,10 +284,10 @@ namespace Crescent_POS
 
                 }
 
-               
-                
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lblex.Text = ex.Message;
                 wrningex.Visible = true;
@@ -341,7 +341,7 @@ namespace Crescent_POS
                 cm.Parameters.AddWithValue("@date", lblDate.Text);
                 cm.Parameters.AddWithValue("@comname", ddlSupplierID.Text);
                 cm.Parameters.AddWithValue("@repname", ddlUserLevel.Text);
-               
+
 
                 cm.ExecuteNonQuery();
                 cm.Dispose();
@@ -364,7 +364,7 @@ namespace Crescent_POS
                 cm1.Parameters.AddWithValue("@qty", txtQty.Text);
                 cm1.Parameters.AddWithValue("@totalprice", txtTotalPrice.Text);
                 cm1.Parameters.AddWithValue("@grnid", lblGRNID.Text);
-                
+
 
 
                 cm1.ExecuteNonQuery();
@@ -386,7 +386,7 @@ namespace Crescent_POS
                 cm2.Parameters.AddWithValue("@costprice", txtCostPrice.Text);
                 cm2.Parameters.AddWithValue("@sellingprice", TextBox8.Text);
                 cm2.Parameters.AddWithValue("@qty", txtQty.Text);
-               
+
 
 
 
@@ -405,7 +405,7 @@ namespace Crescent_POS
                 wrningex.Visible = true;
             }
         }
-    public void LoadSupplierID()
+        public void LoadSupplierID()
         {
             con.Open();
 
@@ -477,7 +477,7 @@ namespace Crescent_POS
 
         protected void ddlSupplierID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void prdctgv_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -512,9 +512,11 @@ namespace Crescent_POS
             gvgrn.DataSource = dt;
             gvgrn.DataBind();
 
+            
+        }
         protected void ddlSupplierID_TextChanged(object sender, EventArgs e)
         {
-           
+
             //con.Open();
 
             MySqlCommand cmd = new MySqlCommand("SELECT repname from tblsupplier WHERE suppliername='" + ddlSupplierID.Text + "'", con);
@@ -522,11 +524,12 @@ namespace Crescent_POS
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);  // fill dataset  
-            //ddlUserLevel.DataTextField = ds.Tables[0].Columns["repname"].ToString(); // text field name of table dispalyed in dropdown       
+                          //ddlUserLevel.DataTextField = ds.Tables[0].Columns["repname"].ToString(); // text field name of table dispalyed in dropdown       
             ddlUserLevel.DataValueField = ds.Tables[0].Columns["repname"].ToString();
             // to retrive specific  textfield name   
             ddlUserLevel.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
             ddlUserLevel.DataBind();  //binding dropdownlist  
         }
     }
+
 }
