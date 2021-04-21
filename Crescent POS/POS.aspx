@@ -178,7 +178,7 @@
                   
                   <div class="form-group form-inline m-2">
                   <label>Recieved Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <asp:TextBox ID="txtRAmount" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                    <asp:TextBox ID="txtRAmount" runat="server" Class="form-control" placeholder="0.00" OnTextChanged="txtRAmount_TextChanged" AutoPostBack="true"></asp:TextBox>
                 </div><!-- /.form-group -->
 
                   <div class="form-group form-inline m-2">

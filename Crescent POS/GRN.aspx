@@ -191,7 +191,7 @@
                           <div class="form-group">
                   <label>Brand</label>
                     <asp:TextBox ID="txtBrand" runat="server" Class="form-control"></asp:TextBox>
-                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchBrand" MinimumPrefixLength="2" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender1" runat="server">
+                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchBrand" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender1" runat="server">
                               </ajaxToolkit:AutoCompleteExtender>
                             
 
@@ -239,7 +239,7 @@
                        <div class="form-group">
                   <label>QTY</label>
                            
-                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number" OnTextChanged="txtQty_TextChanged" autopostback="true"></asp:TextBox>
+                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number"  autopostback="true"></asp:TextBox>
              
         </div>
                           <!-- /.form-group -->

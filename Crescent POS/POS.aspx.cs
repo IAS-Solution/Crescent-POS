@@ -94,5 +94,13 @@ namespace Crescent_POS
             decimal sum = ((100 - discount) * amount)/100;
             txtTotalAmount.Text = sum.ToString();
         }
+
+        protected void txtRAmount_TextChanged(object sender, EventArgs e)
+        {
+            decimal total = decimal.Parse(txtTotalAmount.Text);
+            decimal ramount = decimal.Parse(txtRAmount.Text);
+            decimal sum = ramount-total;
+            txtBalance.Text = sum.ToString();
+        }
     }
 }

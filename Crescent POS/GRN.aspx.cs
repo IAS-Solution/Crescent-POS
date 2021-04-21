@@ -182,7 +182,7 @@ namespace Crescent_POS
             txtQty.Text = "";
             txtTotalPrice.Text = "";
             TextBox8.Text = "";
-            DropDownList1.SelectedIndex = 0;
+           // DropDownList1.SelectedIndex = 0;
             DropDownList3.SelectedIndex = 0;
 
         }
@@ -257,7 +257,7 @@ namespace Crescent_POS
                 }
 
                 dt = (DataTable)ViewState["Details"];
-                dt.Rows.Add(txtprdctid.Text, txtbarcode.Text, DropDownList1.Text, DropDownList3.Text, txtdes.Text, txtCostPrice.Text, txtQty.Text, txtTotalPrice.Text, TextBox8.Text, lblGRNID.Text);
+                dt.Rows.Add(txtprdctid.Text, txtbarcode.Text, DropDownList3.Text, txtdes.Text, txtCostPrice.Text, txtQty.Text, txtTotalPrice.Text, TextBox8.Text, lblGRNID.Text);
                 ViewState["Details"] = dt;
                 prdctgv.DataSource = dt;
                 prdctgv.EmptyDataText = "Product ID";
@@ -309,12 +309,12 @@ namespace Crescent_POS
 
 
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
-        public static string[] GetCompletionList_hotel(string prefixText, int count)
+        public static string[] SearchBrand(string prefixText, int count)
         {
-            string cs = ConfigurationManager.ConnectionStrings["dbconn"].ConnectionString;
+            string cs = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
             using (MySqlConnection conn = new MySqlConnection(cs))
             {
-                string sql = String.Format("SELECT brand FROM grnproduct where brand like '{0}%'", prefixText);
+                string sql = String.Format("SELECT DISTINCT brand FROM grnproduct where brand like '{0}%'", prefixText);
                 MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds, "grnproduct");
@@ -329,6 +329,33 @@ namespace Crescent_POS
                 {
                     DataRow row = ds.Tables[0].Rows[i];
                     pnames[i] = row["brand"].ToString();
+                }
+                return pnames;
+            }
+        }
+
+
+        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        public static string[] SearchCategory(string prefixText, int count)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+            using (MySqlConnection conn = new MySqlConnection(cs))
+            {
+                string sql = String.Format("SELECT DISTINCT category FROM grnproduct where category like '{0}%'", prefixText);
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "grnproduct");
+                int rcount, size;
+                rcount = ds.Tables[0].Rows.Count;
+                if (rcount >= count)
+                    size = count;
+                else
+                    size = rcount;
+                string[] pnames = new string[size];
+                for (int i = 0; i < size; i++)
+                {
+                    DataRow row = ds.Tables[0].Rows[i];
+                    pnames[i] = row["category"].ToString();
                 }
                 return pnames;
             }
