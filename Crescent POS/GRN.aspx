@@ -211,7 +211,7 @@
                          <div class="form-group">
                   <label>Category</label>
                              <asp:TextBox ID="txtCategory" runat="server" Class="form-control"></asp:TextBox>
-                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchCategory" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender2" runat="server">
+                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchCategory" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtCategory" ID="AutoCompleteExtender2" runat="server">
                               </ajaxToolkit:AutoCompleteExtender>
                     <%--<asp:DropDownList ID="DropDownList3" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
@@ -242,13 +242,13 @@
                        <div class="form-group">
                   <label>QTY</label>
                            
-                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" onchange="calctxtboxes()" placeholder="0" Width="75px" TextMode="Number" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" onchange="calctxtboxes()" placeholder="0" Width="75px" TextMode="Number" ></asp:TextBox>
                <script type="text/javascript">
     function calctxtboxes() {
         var cp = document.getElementById('<%=txtCostPrice.ClientID%>').value;
         var qty = document.getElementById('<%=txtQty.ClientID%>').value;
       
-        if (rms != "" && volt !="") {
+        if (cp != "" && qty !="") {
             var tot = cp * qty;
             document.getElementById('<%=txtTotalPrice.ClientID%>').value = tot;
            
@@ -264,7 +264,7 @@
                       <div class="col-md-3">
                        <div class="form-group">
                   <label>Total Price</label>
-                    <asp:TextBox ID="txtTotalPrice" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
+                    <asp:TextBox ID="txtTotalPrice" runat="server" Class="form-control" placeholder="0.00" Width="175px" ReadOnly="true"></asp:TextBox>
                 </div><!-- /.form-group -->
               </div><!-- /.col -->
 
