@@ -240,16 +240,31 @@
 
                       <div class="col-md-3">
                        <div class="form-group">
-                  <label>QTY</label>                     
-                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number" OnTextChanged="txtQty_TextChanged"  autopostback="true"></asp:TextBox>                                    
-        </div><!-- /.form-group -->
-              </div><!-- /.col -->
+                  <label>QTY</label>
+                           
+                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" onchange="calctxtboxes()" placeholder="0" Width="75px" TextMode="Number" ></asp:TextBox>
+               <script type="text/javascript">
+    function calctxtboxes() {
+        var cp = document.getElementById('<%=txtCostPrice.ClientID%>').value;
+        var qty = document.getElementById('<%=txtQty.ClientID%>').value;
+      
+        if (cp != "" && qty !="") {
+            var tot = cp * qty;
+            document.getElementById('<%=txtTotalPrice.ClientID%>').value = tot;
+           
+            
+        }
+    }
+</script>
+        </div>
+                          <!-- /.form-group -->
 
+              </div><!-- /.col -->
 
                       <div class="col-md-3">
                        <div class="form-group">
                   <label>Total Price</label>
-                    <asp:TextBox ID="txtTotalPrice" runat="server" Class="form-control" placeholder="0.00" Width="175px"></asp:TextBox>
+                    <asp:TextBox ID="txtTotalPrice" runat="server" Class="form-control" placeholder="0.00" Width="175px" ReadOnly="true"></asp:TextBox>
                 </div><!-- /.form-group -->
               </div><!-- /.col -->
 
