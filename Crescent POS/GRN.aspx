@@ -239,8 +239,20 @@
                        <div class="form-group">
                   <label>QTY</label>
                            
-                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number"  autopostback="true"></asp:TextBox>
-             
+                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" onchange="calctxtboxes()" placeholder="0" Width="75px" TextMode="Number" ReadOnly="true"></asp:TextBox>
+               <script type="text/javascript">
+    function calctxtboxes() {
+        var rms = document.getElementById('<%=txtCostPrice.ClientID%>').value;
+        var volt = document.getElementById('<%=txtQty.ClientID%>').value;
+      
+        if (rms != "" && volt !="") {
+            var ant = rms * volt;
+            document.getElementById('<%=txtTotalPrice.ClientID%>').value = ant;
+           
+            
+        }
+    }
+</script>
         </div>
                           <!-- /.form-group -->
 
