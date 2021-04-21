@@ -130,15 +130,15 @@
               <div class="col-md-6"> 
 
                 <div class="form-group">
-                  <label>Supplier ID</label>
-                    <asp:DropDownList ID="ddlSupplierID" runat="server" Class="form-control">
+                  <label>Supplier Name</label>
+                    <asp:DropDownList ID="ddlSupplierID" runat="server" Class="form-control" OnTextChanged="ddlSupplierID_TextChanged" AutoPostBack="true">
                     </asp:DropDownList>
                 </div><!-- /.form-group -->
                 
-                <div class="form-group">
+                <%--<div class="form-group">
                   <label>Company Name</label>
                     <asp:TextBox ID="txtUserName" runat="server" Class="form-control" placeholder="Company Name"></asp:TextBox>
-                </div><!-- /.form-group -->   
+                </div><!-- /.form-group --> --%>  
               </div><!-- /.col -->
 
               
@@ -146,9 +146,9 @@
                 <div class="form-group">
                   <label>Rep Name</label>
                     <asp:DropDownList ID="ddlUserLevel" runat="server" Class="form-control">
-                            <asp:ListItem>Admin</asp:ListItem>
+                            <%--<asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
-                            <asp:ListItem>Manager</asp:ListItem>
+                            <asp:ListItem>Manager</asp:ListItem>--%>
                     </asp:DropDownList>
                 </div><!-- /.form-group -->
                 

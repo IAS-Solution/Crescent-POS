@@ -20,6 +20,7 @@ namespace Crescent_POS
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoadSupplierID();
 
             if (!Page.IsPostBack)
             {
@@ -52,14 +53,20 @@ namespace Crescent_POS
             }
             GRNIDLoard();
             Showdate();
-            LoadSupplierID();
+            
             PIDLoard();
             DataLoardgrn();
 
 
         }
-       
-    public void Showdate()
+        protected void txtQty_TextChanged(object sender, EventArgs e)
+        {
+            decimal val1 = decimal.Parse(txtCostPrice.Text);
+            decimal val2 = decimal.Parse(txtQty.Text);
+            decimal sum = val1 * val2;
+            txtTotalPrice.Text = sum.ToString("#,#00.00");
+        }
+        public void Showdate()
         {
             DateTime date = DateTime.Now;
             lblDate.Text = date.ToString("MM/dd/yyyy");
@@ -402,13 +409,13 @@ namespace Crescent_POS
         {
             con.Open();
 
-            MySqlCommand cmd = new MySqlCommand("select * from tblSupplier", con);
+            MySqlCommand cmd = new MySqlCommand("select DISTINCT suppliername  from tblSupplier", con);
             // table name   
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);  // fill dataset  
-            ddlSupplierID.DataTextField = ds.Tables[0].Columns["SupplierID"].ToString(); // text field name of table dispalyed in dropdown       
-            ddlSupplierID.DataValueField = ds.Tables[0].Columns["SupplierID"].ToString();
+            ddlSupplierID.DataTextField = ds.Tables[0].Columns["SupplierName"].ToString(); // text field name of table dispalyed in dropdown       
+            //ddlSupplierID.DataValueField = ds.Tables[0].Columns[""].ToString();
             // to retrive specific  textfield name   
             ddlSupplierID.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
             ddlSupplierID.DataBind();  //binding dropdownlist  
@@ -468,6 +475,11 @@ namespace Crescent_POS
             }
         }
 
+        protected void ddlSupplierID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
         protected void prdctgv_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             if (ViewState["Details"] != null)
@@ -500,7 +512,21 @@ namespace Crescent_POS
             gvgrn.DataSource = dt;
             gvgrn.DataBind();
 
+        protected void ddlSupplierID_TextChanged(object sender, EventArgs e)
+        {
+           
+            //con.Open();
+
+            MySqlCommand cmd = new MySqlCommand("SELECT repname from tblsupplier WHERE suppliername='" + ddlSupplierID.Text + "'", con);
+            // table name   
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);  // fill dataset  
+            //ddlUserLevel.DataTextField = ds.Tables[0].Columns["repname"].ToString(); // text field name of table dispalyed in dropdown       
+            ddlUserLevel.DataValueField = ds.Tables[0].Columns["repname"].ToString();
+            // to retrive specific  textfield name   
+            ddlUserLevel.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
+            ddlUserLevel.DataBind();  //binding dropdownlist  
         }
     }
-   
 }
