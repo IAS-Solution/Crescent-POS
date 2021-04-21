@@ -245,12 +245,12 @@
                     <asp:TextBox ID="txtQty" runat="server" Class="form-control" onchange="calctxtboxes()" placeholder="0" Width="75px" TextMode="Number" ReadOnly="true"></asp:TextBox>
                <script type="text/javascript">
     function calctxtboxes() {
-        var rms = document.getElementById('<%=txtCostPrice.ClientID%>').value;
-        var volt = document.getElementById('<%=txtQty.ClientID%>').value;
+        var cp = document.getElementById('<%=txtCostPrice.ClientID%>').value;
+        var qty = document.getElementById('<%=txtQty.ClientID%>').value;
       
         if (rms != "" && volt !="") {
-            var ant = rms * volt;
-            document.getElementById('<%=txtTotalPrice.ClientID%>').value = ant;
+            var tot = cp * qty;
+            document.getElementById('<%=txtTotalPrice.ClientID%>').value = tot;
            
             
         }
