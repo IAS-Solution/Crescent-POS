@@ -193,10 +193,7 @@
                     <asp:TextBox ID="txtBrand" runat="server" Class="form-control"></asp:TextBox>
                               <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchBrand" MinimumPrefixLength="2" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender1" runat="server">
                               </ajaxToolkit:AutoCompleteExtender>
-                              <%--<asp:AutoCompleteExtender ServiceMethod="GetCompletionList" MinimumPrefixLength="1"  
-   CompletionInterval="10" EnableCaching="false" CompletionSetCount="1" TargetControlID="TextBox1"  
-   ID="AutoCompleteExtender1" runat="server" FirstRowSelected="false">  
-      </asp:AutoCompleteExtender>  --%>
+                            
 
                               <%--<ajaxToolkit:ComboBox ID="cmbBrand" runat="server"  DataSourceID="" DataTextField="brand" DataValueField="brand" AutoCompleteMode="SuggestAppend">
                              <%--</ajaxToolkit:ComboBox>--%>
