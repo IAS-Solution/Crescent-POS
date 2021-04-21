@@ -182,8 +182,8 @@ namespace Crescent_POS
             txtQty.Text = "";
             txtTotalPrice.Text = "";
             TextBox8.Text = "";
-           // DropDownList1.SelectedIndex = 0;
-            DropDownList3.SelectedIndex = 0;
+            txtBrand.Text = "";
+            txtCategory.Text = "";
 
         }
 
@@ -257,7 +257,7 @@ namespace Crescent_POS
                 }
 
                 dt = (DataTable)ViewState["Details"];
-                dt.Rows.Add(txtprdctid.Text, txtbarcode.Text, DropDownList3.Text, txtdes.Text, txtCostPrice.Text, txtQty.Text, txtTotalPrice.Text, TextBox8.Text, lblGRNID.Text);
+                dt.Rows.Add(txtprdctid.Text, txtbarcode.Text,txtBrand.Text, txtCategory.Text, txtdes.Text, txtCostPrice.Text, txtQty.Text, txtTotalPrice.Text, TextBox8.Text, lblGRNID.Text);
                 ViewState["Details"] = dt;
                 prdctgv.DataSource = dt;
                 prdctgv.EmptyDataText = "Product ID";

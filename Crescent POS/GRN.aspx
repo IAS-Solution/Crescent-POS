@@ -210,11 +210,14 @@
                         <div class="col-md-3">
                          <div class="form-group">
                   <label>Category</label>
-                    <asp:DropDownList ID="DropDownList3" runat="server" Class="form-control">
+                             <asp:TextBox ID="txtCategory" runat="server" Class="form-control"></asp:TextBox>
+                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchCategory" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender2" runat="server">
+                              </ajaxToolkit:AutoCompleteExtender>
+                    <%--<asp:DropDownList ID="DropDownList3" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
                             <asp:ListItem>Manager</asp:ListItem>
-                    </asp:DropDownList>
+                    </asp:DropDownList>--%>
                 </div><!-- /.form-group -->
                       </div><!-- /.col -->
 
