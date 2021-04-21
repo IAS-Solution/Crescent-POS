@@ -57,8 +57,14 @@ namespace Crescent_POS
 
 
         }
-       
-    public void Showdate()
+        protected void txtQty_TextChanged(object sender, EventArgs e)
+        {
+            decimal val1 = decimal.Parse(txtCostPrice.Text);
+            decimal val2 = decimal.Parse(txtQty.Text);
+            decimal sum = val1 * val2;
+            txtTotalPrice.Text = sum.ToString("#,#00.00");
+        }
+        public void Showdate()
         {
             DateTime date = DateTime.Now;
             lblDate.Text = date.ToString("MM/dd/yyyy");
@@ -361,5 +367,6 @@ namespace Crescent_POS
             }
         }
 
+       
     }
 }

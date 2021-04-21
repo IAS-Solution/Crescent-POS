@@ -211,7 +211,7 @@
                          <div class="form-group">
                   <label>Category</label>
                              <asp:TextBox ID="txtCategory" runat="server" Class="form-control"></asp:TextBox>
-                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchCategory" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender2" runat="server">
+                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchCategory" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtCategory" ID="AutoCompleteExtender2" runat="server">
                               </ajaxToolkit:AutoCompleteExtender>
                     <%--<asp:DropDownList ID="DropDownList3" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
@@ -240,14 +240,11 @@
 
                       <div class="col-md-3">
                        <div class="form-group">
-                  <label>QTY</label>
-                           
-                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number"  autopostback="true"></asp:TextBox>
-             
-        </div>
-                          <!-- /.form-group -->
-
+                  <label>QTY</label>                     
+                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number" OnTextChanged="txtQty_TextChanged"  autopostback="true"></asp:TextBox>                                    
+        </div><!-- /.form-group -->
               </div><!-- /.col -->
+
 
                       <div class="col-md-3">
                        <div class="form-group">
