@@ -27,9 +27,80 @@
       </div><!-- /.container-fluid -->
     </div><!-- /.content-header -->
     
+         <div class="alert alert-success alert-dismissible" ID="savealert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px; "> 
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                  Data inserted successfully!
+   </div>
+         <div class="alert alert-danger alert-dismissible" id="deletealert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                  Data delete successfully!
+                </div>
 
+        
+         <div class="alert alert-warning alert-dismissible" id="warningalert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                BarCode is Empty!
+                </div>
+          
+        <div class="alert alert-warning alert-dismissible" id="wrningex" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                    
+               <asp:Label id="lblex" runat="server"></asp:Label>
+                </div>
+         <div class="alert alert-warning alert-dismissible" id="wrningtxtQty" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please Give a QTY to Add!
+                </div>
+        
+         <div class="alert alert-warning alert-dismissible" id="wrningtxtCostPrice" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please give a Cost Price to Add!
+                </div>
+         <div class="alert alert-warning alert-dismissible" id="wrningdes" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please give a Description to Add!
+                </div>
+         <div class="alert alert-warning alert-dismissible" id="wrningtxtTotalPrice" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please give a Total Price to Add!
+                </div>
+          <div class="alert alert-warning alert-dismissible" id="wrningamt" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Please give a Selling Price to save!
+                </div>
+         <div class="alert alert-warning alert-dismissible" id="wrningbarcodedup" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                 Bar Code is Duplicated!
+                </div>
+        
+         <div class="alert alert-info alert-dismissible" id="updatealert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                 Data update successfully!
+                </div>
     <!-- Main content -->
-      <div class="container-fluid">
+        <div class="container-fluid">
            <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
           <div class="card-header">
             <h3 class="card-title">Add Supplier</h3>
@@ -102,8 +173,8 @@
 
               <div class="col-md-3"> 
                 <div class="form-group">
-                  <label>Product Code</label>
-                    <asp:TextBox ID="TextBox1" runat="server" Class="form-control" placeholder="Product Code"></asp:TextBox>
+                  <label>Product ID</label>
+                    <asp:TextBox ID="txtprdctid" runat="server" Class="form-control" placeholder="Product ID" ReadOnly="true"></asp:TextBox>
                 </div><!-- /.form-group -->
               </div><!-- /.col -->
 
@@ -111,7 +182,7 @@
                       <div class="col-md-3">
                           <div class="form-group">
                   <label>Bar Code</label>
-                    <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="10012791289"></asp:TextBox>
+                    <asp:TextBox ID="txtbarcode" runat="server" Class="form-control" placeholder="Barcode"></asp:TextBox>
                 </div><!-- /.form-group -->
               </div><!-- /.col -->
 
@@ -154,7 +225,7 @@
                       <div class="col-md-12">
                           <div class="form-group">
                               <label>Description</label>
-                              <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="Description"></asp:TextBox>
+                              <asp:TextBox ID="txtdes" runat="server" Class="form-control" placeholder="Description"></asp:TextBox>
                           </div>
                           <!-- /.form-group -->
                       </div><!-- /.col -->
@@ -170,8 +241,12 @@
                       <div class="col-md-3">
                        <div class="form-group">
                   <label>QTY</label>
-                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number" OnTextChanged="txtQty_TextChanged" AutoPostBack="true"></asp:TextBox>
-                </div><!-- /.form-group -->
+                           
+                    <asp:TextBox ID="txtQty" runat="server" Class="form-control" placeholder="0" Width="75px" TextMode="Number" OnTextChanged="txtQty_TextChanged" autopostback="true"></asp:TextBox>
+             
+        </div>
+                          <!-- /.form-group -->
+
               </div><!-- /.col -->
 
                       <div class="col-md-3">
@@ -197,11 +272,23 @@
           </div><!-- /.card-body -->
           
           <div class="card-footer">  
-              <asp:Button ID="Button2" runat="server" Class="btn btn-primary" Text="ADD" />
-               <asp:Button ID="Button3" runat="server" Class="btn btn-warning" Text="Update"/>
-              <asp:Button ID="Button4" runat="server" Class="btn btn-danger" Text="Delete"/>
-          </div>
-        </div><!-- /.card -->
+              <asp:Button ID="addbtn" runat="server" Class="btn btn-primary" Text="ADD" OnClick="addbtn_Click" />
+               <asp:Button ID="updatebtn" runat="server" Class="btn btn-warning" Text="Update"/>
+              <asp:Button ID="deletebtn" runat="server" Class="btn btn-danger" Text="Delete"/>
+              <br /> <br />
+
+           <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Product Table</h3>
+                 </div><!-- /.card-header -->
+              
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                  <asp:GridView ID="prdctgv" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal"  AutoGenerateSelectButton="true" AutoGenerateDeleteButton="true">
+                    
+                  </asp:GridView>
+              </div> <!-- /.card-body -->
+             
+            </div>
 
 
 
