@@ -54,6 +54,7 @@ namespace Crescent_POS
             Showdate();
             LoadSupplierID();
             PIDLoard();
+            DataLoardgrn();
 
 
         }
@@ -173,6 +174,8 @@ namespace Crescent_POS
             updatealert.Visible = false;
             deletealert.Visible = false;
             wrningex.Visible = false;
+            savealert1.Visible = false;
+            savealert2.Visible = false;
         }
         public void txtboxclear()
         {
@@ -193,6 +196,39 @@ namespace Crescent_POS
 
             try
             {
+                
+
+                 if (txtbarcode.Text == "")
+                {
+                    warningalert.Visible = true;
+
+                    return;
+                }
+                 if (txtdes.Text == "")
+                {
+                    wrningdes.Visible = true;
+
+                    return;
+                }
+                 if (txtCostPrice.Text == "")
+                {
+                    wrningtxtCostPrice.Visible = true;
+
+                    return;
+                }
+                 if (txtQty.Text == "")
+                {
+                    wrningtxtQty.Visible = true;
+
+                    return;
+                }
+
+                 if (TextBox8.Text == "")
+                {
+                    wrningamt.Visible = true;
+
+                    return;
+                }
                 if (!string.IsNullOrWhiteSpace(this.txtbarcode.Text))
 
                 {
@@ -208,6 +244,29 @@ namespace Crescent_POS
                     }
                     if (!ifExist)
                     {
+                        int val1 = Convert.ToInt32(txtCostPrice.Text);
+                        int val2 = Convert.ToInt32(txtQty.Text);
+                        int tot = val1 * val2;
+                        dt = (DataTable)ViewState["Details"];
+                        dt.Rows.Add(txtprdctid.Text, txtbarcode.Text, txtBrand.Text, txtCategory.Text, txtdes.Text, txtCostPrice.Text, txtQty.Text, tot, TextBox8.Text, lblGRNID.Text);
+                        ViewState["Details"] = dt;
+                        prdctgv.DataSource = dt;
+                        prdctgv.EmptyDataText = "Product ID";
+                        prdctgv.EmptyDataText = "Barcode";
+                        prdctgv.EmptyDataText = "Brand";
+                        prdctgv.EmptyDataText = "Category";
+                        prdctgv.EmptyDataText = "Description";
+                        prdctgv.EmptyDataText = "Cost Price";
+                        prdctgv.EmptyDataText = "Qty";
+                        prdctgv.EmptyDataText = "Total Price";
+                        prdctgv.EmptyDataText = "Selling Price";
+                        prdctgv.EmptyDataText = "Grn ID";
+                        prdctgv.DataBind();
+
+                        int pid = int.Parse(txtprdctid.Text);
+                        int npid = pid + 1;
+                        txtprdctid.Text = npid.ToString();
+                        txtboxclear();
                     }
                     else
                     {
@@ -216,8 +275,24 @@ namespace Crescent_POS
 
 
 
-                } 
-                   
+                }
+
+               
+                
+            }
+            catch(Exception ex)
+            {
+                lblex.Text = ex.Message;
+                wrningex.Visible = true;
+            }
+        }
+        protected void savebtn_Click(object sender, EventArgs e)
+        {
+            hidealert();
+
+            try
+            {
+
 
                 if (txtbarcode.Text == "")
                 {
@@ -243,55 +318,87 @@ namespace Crescent_POS
 
                     return;
                 }
-                if (txtTotalPrice.Text == "")
-                {
-                    wrningtxtTotalPrice.Visible = true;
 
-                    return;
-                }
                 if (TextBox8.Text == "")
                 {
                     wrningamt.Visible = true;
 
                     return;
                 }
+                //data insert grntbl
+                MySqlConnection con1 = new MySqlConnection(connectionString);
+                con1.Open();
+                MySqlCommand cm = new MySqlCommand("Insert into tblgrn (GRNID,Date,Company,refname)  values(@grnid,@date,@comname,@repname)", con1);
 
-                dt = (DataTable)ViewState["Details"];
-                dt.Rows.Add(txtprdctid.Text, txtbarcode.Text,txtBrand.Text, txtCategory.Text, txtdes.Text, txtCostPrice.Text, txtQty.Text, txtTotalPrice.Text, TextBox8.Text, lblGRNID.Text);
-                ViewState["Details"] = dt;
-                prdctgv.DataSource = dt;
-                prdctgv.EmptyDataText = "Product ID";
-                prdctgv.EmptyDataText = "Barcode";
-                prdctgv.EmptyDataText = "Brand";
-                prdctgv.EmptyDataText = "Category";
-                prdctgv.EmptyDataText = "Description";
-                prdctgv.EmptyDataText = "Cost Price";
-                prdctgv.EmptyDataText = "Qty";
-                prdctgv.EmptyDataText = "Total Price";
-                prdctgv.EmptyDataText = "Selling Price";
-                prdctgv.EmptyDataText = "Grn ID";
-                prdctgv.DataBind();
+                cm.Parameters.AddWithValue("@grnid", lblGRNID.Text);
+                cm.Parameters.AddWithValue("@date", lblDate.Text);
+                cm.Parameters.AddWithValue("@comname", ddlSupplierID.Text);
+                cm.Parameters.AddWithValue("@repname", ddlUserLevel.Text);
+               
 
-                int pid = int.Parse(txtprdctid.Text);
-                int npid = pid + 1;
-                txtprdctid.Text = npid.ToString();
-                txtboxclear();
+                cm.ExecuteNonQuery();
+                cm.Dispose();
+
+                savealert.Visible = true;
+                con1.Close();
+
+                //data insert prdcttbl
+                MySqlConnection con2 = new MySqlConnection(connectionString);
+                con2.Open();
+                MySqlCommand cm1 = new MySqlCommand("Insert into grnproduct (productid,description,barcode,brand,category,costprice,sellingprice,qty,totalprice,grnid)  values(@productid,@description,@barcode,@brand,@category,@costprice,@sellingprice,@qty,@totalprice,@grnid)", con2);
+
+                cm1.Parameters.AddWithValue("@productid", txtprdctid.Text);
+                cm1.Parameters.AddWithValue("@description", txtdes.Text);
+                cm1.Parameters.AddWithValue("@barcode", txtbarcode.Text);
+                cm1.Parameters.AddWithValue("@brand", txtBrand.Text);
+                cm1.Parameters.AddWithValue("@category", txtCategory.Text);
+                cm1.Parameters.AddWithValue("@costprice", txtCostPrice.Text);
+                cm1.Parameters.AddWithValue("@sellingprice", TextBox8.Text);
+                cm1.Parameters.AddWithValue("@qty", txtQty.Text);
+                cm1.Parameters.AddWithValue("@totalprice", txtTotalPrice.Text);
+                cm1.Parameters.AddWithValue("@grnid", lblGRNID.Text);
+                
+
+
+                cm1.ExecuteNonQuery();
+                cm1.Dispose();
+
+                savealert1.Visible = true;
+                con2.Close();
+
+                //data insert tblstock
+                MySqlConnection con3 = new MySqlConnection(connectionString);
+                con3.Open();
+                MySqlCommand cm2 = new MySqlCommand("Insert into tblstock (productid,description,barcode,brand,category,costprice,sellingprice,qty)  values(@productid,@description,@barcode,@brand,@category,@costprice,@sellingprice,@qty)", con3);
+
+                cm2.Parameters.AddWithValue("@productid", txtprdctid.Text);
+                cm2.Parameters.AddWithValue("@description", txtdes.Text);
+                cm2.Parameters.AddWithValue("@barcode", txtbarcode.Text);
+                cm2.Parameters.AddWithValue("@brand", txtBrand.Text);
+                cm2.Parameters.AddWithValue("@category", txtCategory.Text);
+                cm2.Parameters.AddWithValue("@costprice", txtCostPrice.Text);
+                cm2.Parameters.AddWithValue("@sellingprice", TextBox8.Text);
+                cm2.Parameters.AddWithValue("@qty", txtQty.Text);
+               
+
+
+
+                cm2.ExecuteNonQuery();
+                cm2.Dispose();
+
+                savealert2.Visible = true;
+                con3.Close();
+
+
             }
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 lblex.Text = ex.Message;
                 wrningex.Visible = true;
             }
         }
-        //protected void txtQty_TextChanged(object sender, EventArgs e)
-        //{
-        //    decimal val1 = decimal.Parse(txtCostPrice.Text);
-        //    decimal val2 = decimal.Parse(txtQty.Text);
-        //    decimal sum = val1 * val2;
-        //    txtTotalPrice.Text = sum.ToString("#,#00.00");
-        //}
-
-        public void LoadSupplierID()
+    public void LoadSupplierID()
         {
             con.Open();
 
@@ -361,5 +468,39 @@ namespace Crescent_POS
             }
         }
 
+        protected void prdctgv_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            if (ViewState["Details"] != null)
+            {
+                DataTable dt = (DataTable)ViewState["Details"];
+                DataRow drCurrentRow = null;
+                int rowIndex = Convert.ToInt32(e.RowIndex);
+                if (dt.Rows.Count > 0)
+                {
+                    dt.Rows.Remove(dt.Rows[rowIndex]);
+                    drCurrentRow = dt.NewRow();
+                    ViewState["Details"] = dt;
+                    prdctgv.DataSource = dt;
+                    prdctgv.DataBind();
+                }
+            }
+        }
+        public void DataLoardgrn()
+        {
+            con.Close();
+            string cmd = "select * from tblcustomer";
+            MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            myAdapter.Fill(ds);
+            dt = ds.Tables[0];
+
+            //Bind the fetched data to gridview
+            gvgrn.DataSource = dt;
+            gvgrn.DataBind();
+
+        }
     }
+   
 }

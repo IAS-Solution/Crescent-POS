@@ -49,6 +49,24 @@ namespace Crescent_POS {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl savealert;
         
         /// <summary>
+        /// savealert2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl savealert2;
+        
+        /// <summary>
+        /// savealert1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl savealert1;
+        
+        /// <summary>
         /// deletealert control.
         /// </summary>
         /// <remarks>
@@ -292,15 +310,6 @@ namespace Crescent_POS {
         protected global::System.Web.UI.WebControls.Button updatebtn;
         
         /// <summary>
-        /// deletebtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deletebtn;
-        
-        /// <summary>
         /// prdctgv control.
         /// </summary>
         /// <remarks>
@@ -308,6 +317,33 @@ namespace Crescent_POS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView prdctgv;
+        
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// Button3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// Button4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// txtSearch control.
@@ -328,12 +364,12 @@ namespace Crescent_POS {
         protected global::System.Web.UI.HtmlControls.HtmlButton Button1;
         
         /// <summary>
-        /// gvUsers control.
+        /// gvgrn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvUsers;
+        protected global::System.Web.UI.WebControls.GridView gvgrn;
     }
 }
