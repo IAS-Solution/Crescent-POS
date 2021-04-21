@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
@@ -64,7 +65,7 @@ namespace Crescent_POS
                         MySqlCommand command = new MySqlCommand("select max(grnID) from tblgrn", con);
                         string id = command.ExecuteScalar().ToString();
                         int uid = Convert.ToInt32(id);
-                        int uuid = uid + 1 ;
+                        int uuid = uid + 1;
                         lblGRNID.Text = uuid.ToString();
                     }
                     catch (Exception)
@@ -109,5 +110,33 @@ namespace Crescent_POS
             ddlSupplierID.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
             ddlSupplierID.DataBind();  //binding dropdownlist  
         }
+
+
+        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        public static string[] GetCompletionList_hotel(string prefixText, int count)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["dbconn"].ConnectionString;
+            using (MySqlConnection conn = new MySqlConnection(cs))
+            {
+                string sql = String.Format("SELECT brand FROM grnproduct where brand like '{0}%'", prefixText);
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "grnproduct");
+                int rcount, size;
+                rcount = ds.Tables[0].Rows.Count;
+                if (rcount >= count)
+                    size = count;
+                else
+                    size = rcount;
+                string[] pnames = new string[size];
+                for (int i = 0; i < size; i++)
+                {
+                    DataRow row = ds.Tables[0].Rows[i];
+                    pnames[i] = row["brand"].ToString();
+                }
+                return pnames;
+            }
+        }
+
     }
 }

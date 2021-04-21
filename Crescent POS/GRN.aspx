@@ -1,9 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="GRN.aspx.cs" Inherits="Crescent_POS.GRN" %>
 
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" Class="content-wrapper"> 
-  <form runat="server">   
+    <form runat="server">  
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
     <div class="content-wrapper"><!--Content Wrapper. Contains page content-->   
     <div class="content-header"><!-- Content Header (Page header) -->
       <div class="container-fluid">
@@ -115,11 +119,23 @@
                       <div class="col-md-3">
                           <div class="form-group">
                   <label>Brand</label>
-                    <asp:DropDownList ID="DropDownList1" runat="server" Class="form-control">
+                    <asp:TextBox ID="txtBrand" runat="server" Class="form-control"></asp:TextBox>
+                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchBrand" MinimumPrefixLength="2" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender1" runat="server">
+                              </ajaxToolkit:AutoCompleteExtender>
+                              <%--<asp:AutoCompleteExtender ServiceMethod="GetCompletionList" MinimumPrefixLength="1"  
+   CompletionInterval="10" EnableCaching="false" CompletionSetCount="1" TargetControlID="TextBox1"  
+   ID="AutoCompleteExtender1" runat="server" FirstRowSelected="false">  
+      </asp:AutoCompleteExtender>  --%>
+
+                              <%--<ajaxToolkit:ComboBox ID="cmbBrand" runat="server"  DataSourceID="" DataTextField="brand" DataValueField="brand" AutoCompleteMode="SuggestAppend">
+                             <%--</ajaxToolkit:ComboBox>--%>
+                              <%--<asp:SqlDataSource ID="sdsBrand" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="select distinct [brand] from grnproduct"></asp:SqlDataSource>--%>
+                            
+                    <%--<asp:DropDownList ID="DropDownList1" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
                             <asp:ListItem>Manager</asp:ListItem>
-                    </asp:DropDownList>
+                    </asp:DropDownList>--%>
                 </div><!-- /.form-group -->
                       </div><!-- /.col -->
 
