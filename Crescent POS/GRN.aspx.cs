@@ -92,7 +92,8 @@ namespace Crescent_POS
                 }
                 else
                 {
-                    con.Open();
+                    MySqlConnection con1 = new MySqlConnection(connectionString);
+                    con1.Open();
                     try
                     {
                         MySqlCommand command = new MySqlCommand("select max(grnID) from tblgrn", con);
@@ -107,7 +108,7 @@ namespace Crescent_POS
                     }
                     finally
                     {
-                        con.Close();
+                        con1.Close();
                     }
                 }
 
@@ -199,6 +200,8 @@ namespace Crescent_POS
 
         protected void addbtn_Click(object sender, EventArgs e)
         {
+            gvprdctdiv1.Visible = true;
+            gvprdctdiv.Visible = true;
             hidealert();
 
             try
@@ -300,45 +303,13 @@ namespace Crescent_POS
             try
             {
 
-
-                if (txtbarcode.Text == "")
-                {
-                    warningalert.Visible = true;
-
-                    return;
-                }
-                if (txtdes.Text == "")
-                {
-                    wrningdes.Visible = true;
-
-                    return;
-                }
-                if (txtCostPrice.Text == "")
-                {
-                    wrningtxtCostPrice.Visible = true;
-
-                    return;
-                }
-                if (txtQty.Text == "")
-                {
-                    wrningtxtQty.Visible = true;
-
-                    return;
-                }
-
-                if (TextBox8.Text == "")
-                {
-                    wrningamt.Visible = true;
-
-                    return;
-                }
-                //data insert grntbl
+                //////data insert grntbl
                 MySqlConnection con1 = new MySqlConnection(connectionString);
                 con1.Open();
                 MySqlCommand cm = new MySqlCommand("Insert into tblgrn (GRNID,Date,Company,refname)  values(@grnid,@date,@comname,@repname)", con1);
 
                 cm.Parameters.AddWithValue("@grnid", lblGRNID.Text);
-                cm.Parameters.AddWithValue("@date", lblDate.Text);
+                cm.Parameters.AddWithValue("@date", Convert.ToDateTime(lblDate.Text, System.Globalization.CultureInfo.CurrentCulture));
                 cm.Parameters.AddWithValue("@comname", ddlSupplierID.Text);
                 cm.Parameters.AddWithValue("@repname", ddlUserLevel.Text);
 
@@ -350,53 +321,93 @@ namespace Crescent_POS
                 con1.Close();
 
                 //data insert prdcttbl
-                MySqlConnection con2 = new MySqlConnection(connectionString);
-                con2.Open();
-                MySqlCommand cm1 = new MySqlCommand("Insert into grnproduct (productid,description,barcode,brand,category,costprice,sellingprice,qty,totalprice,grnid)  values(@productid,@description,@barcode,@brand,@category,@costprice,@sellingprice,@qty,@totalprice,@grnid)", con2);
 
-                cm1.Parameters.AddWithValue("@productid", txtprdctid.Text);
-                cm1.Parameters.AddWithValue("@description", txtdes.Text);
-                cm1.Parameters.AddWithValue("@barcode", txtbarcode.Text);
-                cm1.Parameters.AddWithValue("@brand", txtBrand.Text);
-                cm1.Parameters.AddWithValue("@category", txtCategory.Text);
-                cm1.Parameters.AddWithValue("@costprice", txtCostPrice.Text);
-                cm1.Parameters.AddWithValue("@sellingprice", TextBox8.Text);
-                cm1.Parameters.AddWithValue("@qty", txtQty.Text);
-                cm1.Parameters.AddWithValue("@totalprice", txtTotalPrice.Text);
-                cm1.Parameters.AddWithValue("@grnid", lblGRNID.Text);
+                for (int i = 0; i <= prdctgv.Rows.Count - 1; i++)
+                {
+                    MySqlConnection con2 = new MySqlConnection(connectionString);
 
+                    string cd = "Insert into grnproduct (productid,description,barcode,brand,category,costprice,sellingprice,qty,totalprice,grnid)  values(@productid,@description,@barcode,@brand,@category,@costprice,@sellingprice,@qty,@totalprice,@grnid)";
+                    cmd = new MySqlCommand(cd);
+                    cmd.Connection = con2;
 
+                    cmd.Parameters.AddWithValue("productid", prdctgv.Rows[i].Cells[1].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("description", prdctgv.Rows[i].Cells[5].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("barcode", prdctgv.Rows[i].Cells[2].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("brand", prdctgv.Rows[i].Cells[3].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("category", prdctgv.Rows[i].Cells[4].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("costprice", prdctgv.Rows[i].Cells[6].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("sellingprice", prdctgv.Rows[i].Cells[9].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("qty", prdctgv.Rows[i].Cells[7].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("totalprice", prdctgv.Rows[i].Cells[8].Text.Replace("&nbsp;", ""));
+                    cmd.Parameters.AddWithValue("grnid", prdctgv.Rows[i].Cells[10].Text.Replace("&nbsp;", ""));
 
-                cm1.ExecuteNonQuery();
-                cm1.Dispose();
-
-                savealert1.Visible = true;
-                con2.Close();
-
-                //data insert tblstock
-                MySqlConnection con3 = new MySqlConnection(connectionString);
-                con3.Open();
-                MySqlCommand cm2 = new MySqlCommand("Insert into tblstock (productid,description,barcode,brand,category,costprice,sellingprice,qty)  values(@productid,@description,@barcode,@brand,@category,@costprice,@sellingprice,@qty)", con3);
-
-                cm2.Parameters.AddWithValue("@productid", txtprdctid.Text);
-                cm2.Parameters.AddWithValue("@description", txtdes.Text);
-                cm2.Parameters.AddWithValue("@barcode", txtbarcode.Text);
-                cm2.Parameters.AddWithValue("@brand", txtBrand.Text);
-                cm2.Parameters.AddWithValue("@category", txtCategory.Text);
-                cm2.Parameters.AddWithValue("@costprice", txtCostPrice.Text);
-                cm2.Parameters.AddWithValue("@sellingprice", TextBox8.Text);
-                cm2.Parameters.AddWithValue("@qty", txtQty.Text);
+                    con2.Open();
+                    cmd.ExecuteNonQuery();
+                    con2.Close();
+                    savealert1.Visible = true;
 
 
 
+                }
 
-                cm2.ExecuteNonQuery();
-                cm2.Dispose();
+                //insert tbl stock
 
+                for (int q = 0; q <= prdctgv.Rows.Count - 1; q++)
+                {
+                    MySqlConnection conn3 = new MySqlConnection(connectionString);
+
+                    MySqlCommand cmd = new MySqlCommand("Select * from tblstock where productid= @productid", con);
+                    cmd.Parameters.AddWithValue("@productid", prdctgv.Rows[q].Cells[1].Text);
+                    conn3.Open();
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        if (dr.HasRows == true)
+                        {
+                            string upcd = " UPDATE tblstock SET qty=qty+@newqty WHERE productid = @productid";
+                            cmd = new MySqlCommand(upcd);
+                            cmd.Connection = conn3;
+
+                            cmd.Parameters.AddWithValue("productid", prdctgv.Rows[q].Cells[1].Text);
+                            cmd.Parameters.AddWithValue("newqty", prdctgv.Rows[q].Cells[7].Text);
+                            conn3.Close();
+                        }
+                        else
+                        {
+                           
+                                MySqlConnection con3 = new MySqlConnection(connectionString);
+
+                                string cd = "Insert into tblstock (productid,description,barcode,brand,category,costprice,sellingprice,qty)  values(@productid,@description,@barcode,@brand,@category,@costprice,@sellingprice,@qty)";
+                                cmd = new MySqlCommand(cd);
+                                cmd.Connection = con3;
+
+                                cmd.Parameters.AddWithValue("productid", prdctgv.Rows[q].Cells[1].Text.Replace("&nbsp;", ""));
+                                cmd.Parameters.AddWithValue("description", prdctgv.Rows[q].Cells[5].Text.Replace("&nbsp;", ""));
+                                cmd.Parameters.AddWithValue("barcode", prdctgv.Rows[q].Cells[2].Text.Replace("&nbsp;", ""));
+                                cmd.Parameters.AddWithValue("brand", prdctgv.Rows[q].Cells[3].Text.Replace("&nbsp;", ""));
+                                cmd.Parameters.AddWithValue("category", prdctgv.Rows[q].Cells[4].Text.Replace("&nbsp;", ""));
+                                cmd.Parameters.AddWithValue("costprice", prdctgv.Rows[q].Cells[6].Text.Replace("&nbsp;", ""));
+                                cmd.Parameters.AddWithValue("sellingprice", prdctgv.Rows[q].Cells[9].Text.Replace("&nbsp;", ""));
+                                cmd.Parameters.AddWithValue("qty", prdctgv.Rows[q].Cells[7].Text.Replace("&nbsp;", ""));
+
+
+                                con3.Open();
+                                cmd.ExecuteNonQuery();
+                                con3.Close();
+                               
+
+                            
+                        }
+                    }
+                    
+   
+                }
                 savealert2.Visible = true;
-                con3.Close();
-
-
+                DataLoardgrn();
+                prdctgv.DataSource = null;
+                prdctgv.DataBind();
+                gvprdctdiv1.Visible = false;
+                gvprdctdiv.Visible = false;
             }
 
             catch (Exception ex)
@@ -405,6 +416,7 @@ namespace Crescent_POS
                 wrningex.Visible = true;
             }
         }
+       
         public void LoadSupplierID()
         {
             con.Open();
@@ -500,7 +512,7 @@ namespace Crescent_POS
         public void DataLoardgrn()
         {
             con.Close();
-            string cmd = "select * from tblcustomer";
+            string cmd = "select * from tblgrn";
             MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
