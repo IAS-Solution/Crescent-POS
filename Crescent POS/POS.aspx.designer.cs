@@ -40,6 +40,24 @@ namespace Crescent_POS {
         protected global::System.Web.UI.WebControls.Label lblDate;
         
         /// <summary>
+        /// wrningex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl wrningex;
+        
+        /// <summary>
+        /// lblex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblex;
+        
+        /// <summary>
         /// txtBarCodeSearch control.
         /// </summary>
         /// <remarks>
@@ -49,13 +67,13 @@ namespace Crescent_POS {
         protected global::System.Web.UI.WebControls.TextBox txtBarCodeSearch;
         
         /// <summary>
-        /// gvUsers control.
+        /// gvbillitem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvUsers;
+        protected global::System.Web.UI.WebControls.GridView gvbillitem;
         
         /// <summary>
         /// txtPhoneSearch control.

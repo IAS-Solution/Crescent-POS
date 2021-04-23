@@ -16,6 +16,7 @@ namespace Crescent_POS
         public static string connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         MySqlConnection con = new MySqlConnection(connectionString);
         MySqlDataReader rdr;
+        DataTable dt = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +24,28 @@ namespace Crescent_POS
             Showdate();
             //ShowTime();
             txtBarCodeSearch.Focus();
+            if (!Page.IsPostBack)
+            {
+                if (Session["user_name"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+            }
+            if (!IsPostBack)
+            {
+                if (ViewState["Details"] == null)
+                {
+
+                    dt.Columns.Add("Product ID");
+                    dt.Columns.Add("Brand");
+                    dt.Columns.Add("Description");
+                    dt.Columns.Add("Selling Price");
+                    dt.Columns.Add("Qty");
+                    dt.Columns.Add("Total Price");
+                    ViewState["Details"] = dt;
+                }
+            }
+
         }
 
         public void Showdate()
@@ -38,6 +61,43 @@ namespace Crescent_POS
 
         protected void txtBarCodeSearch_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                string query = "SELECT productid,brand,description,sellingprice,qty from tblstock where barcode = '" + txtBarCodeSearch.Text + "' ";
+                DataTable tempdt = new DataTable();
+            MySqlConnection sqlConn = new MySqlConnection(connectionString);
+            sqlConn.Open();
+            MySqlCommand cmd = new MySqlCommand(query, sqlConn);
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            
+            da.Fill(tempdt);
+            sqlConn.Close();
+
+            int pid = Convert.ToInt32(tempdt.Rows[0]["productid"]);
+                string brand = tempdt.Rows[0]["brand"].ToString();
+                string des = tempdt.Rows[0]["description"].ToString();
+                decimal sp = Convert.ToDecimal(tempdt.Rows[0]["sellingprice"]);
+                int qty = Convert.ToInt32(tempdt.Rows[0]["qty"]);
+                decimal tot = qty * sp;
+
+                dt = (DataTable)ViewState["Details"];
+                dt.Rows.Add(pid, brand, des, sp, qty, tot);
+                ViewState["Details"] = dt;
+                gvbillitem.DataSource = dt;
+                gvbillitem.EmptyDataText = "Product ID";
+                gvbillitem.EmptyDataText = "Brand";
+                gvbillitem.EmptyDataText = "Description";
+                gvbillitem.EmptyDataText = "Selling Price";
+                gvbillitem.EmptyDataText = "Qty";
+                gvbillitem.EmptyDataText = "Total Price";
+                gvbillitem.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lblex.Text = ex.Message;
+                wrningex.Visible = true;
+            }
+
 
         }
 
@@ -82,12 +142,29 @@ namespace Crescent_POS
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    lblex.Text = ex.Message;
+                    wrningex.Visible = true;
                 }
 
             }
         }
-
+        protected void gvbillitem_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            if (ViewState["Details"] != null)
+            {
+                DataTable dt = (DataTable)ViewState["Details"];
+                DataRow drCurrentRow = null;
+                int rowIndex = Convert.ToInt32(e.RowIndex);
+                if (dt.Rows.Count > 0)
+                {
+                    dt.Rows.Remove(dt.Rows[rowIndex]);
+                    drCurrentRow = dt.NewRow();
+                    ViewState["Details"] = dt;
+                    gvbillitem.DataSource = dt;
+                    gvbillitem.DataBind();
+                }
+            }
+        }
         protected void ddlDiscount_SelectedIndexChanged(object sender, EventArgs e)
         {
             decimal amount = decimal.Parse(txtAmount.Text);
