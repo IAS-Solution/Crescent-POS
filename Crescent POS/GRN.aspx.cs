@@ -55,7 +55,7 @@ namespace Crescent_POS
             Showdate();
 
             PIDLoard();
-            DataLoardgrn();
+            //DataLoardgrn();
 
 
         }
@@ -92,7 +92,7 @@ namespace Crescent_POS
                 }
                 else
                 {
-                    con.Open();
+                    //con.Open();
                     try
                     {
                         MySqlCommand command = new MySqlCommand("select max(grnID) from tblgrn", con);
@@ -407,18 +407,32 @@ namespace Crescent_POS
         }
         public void LoadSupplierID()
         {
-            con.Open();
 
-            MySqlCommand cmd = new MySqlCommand("select DISTINCT suppliername  from tblSupplier", con);
+
+
+            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from tblSupplier", con);
+            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            ddlSupplierID.DataSource = dt;
+            ddlSupplierID.DataBind();
+
+
+
+            //con.Open();
+
+            //MySqlCommand cmd = new MySqlCommand("select DISTINCT suppliername  from tblSupplier", con);
             // table name   
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);  // fill dataset  
-            ddlSupplierID.DataTextField = ds.Tables[0].Columns["SupplierName"].ToString(); // text field name of table dispalyed in dropdown       
+            //MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds);  // fill dataset  
+            //ddlSupplierID.DataTextField = ds.Tables[0].Columns["SupplierName"].ToString();     
             //ddlSupplierID.DataValueField = ds.Tables[0].Columns[""].ToString();
             // to retrive specific  textfield name   
-            ddlSupplierID.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
-            ddlSupplierID.DataBind();  //binding dropdownlist  
+            //ddlSupplierID.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
+            //ddlSupplierID.DataBind();  //binding dropdownlist  
         }
 
 
@@ -517,18 +531,34 @@ namespace Crescent_POS
         protected void ddlSupplierID_TextChanged(object sender, EventArgs e)
         {
 
-            //con.Open();
+            ddlUserLevel.Items.Clear();
+            ddlUserLevel.Items.Add("repname");
+            con.Open();
+            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
+            MySqlCommand cmd = new MySqlCommand("SELECT * from tblsupplier where supplierid=" + ddlSupplierID.SelectedItem.Value, con);
+            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            ddlUserLevel.DataSource = dt;
+            ddlUserLevel.DataBind();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT repname from tblsupplier WHERE suppliername='" + ddlSupplierID.Text + "'", con);
-            // table name   
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);  // fill dataset  
-                          //ddlUserLevel.DataTextField = ds.Tables[0].Columns["repname"].ToString(); // text field name of table dispalyed in dropdown       
-            ddlUserLevel.DataValueField = ds.Tables[0].Columns["repname"].ToString();
-            // to retrive specific  textfield name   
-            ddlUserLevel.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
-            ddlUserLevel.DataBind();  //binding dropdownlist  
+            //con.Open();
+            //MySqlCommand cmd = new MySqlCommand("SELECT repname from tblsupplier WHERE suppliername='" + ddlSupplierID.Text + "'", con);
+            //MySqlDataReader dr = cmd.ExecuteReader();
+
+            //if (dr.HasRows)
+            //{
+            //while (dr.Read())
+            //{
+
+            //    ddlUserLevel.SelectedValue = (dr["repname"].ToString());
+            //txtCustomerID.Text = (dr["Cusid"].ToString());
+            //txtPreReceivable.Text = (dr["amt"].ToString());
+            //rdLoyalty.Checked = true;
+            //MessageBox.Show("Search Completed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+            //}
+            //}
         }
     }
 

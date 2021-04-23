@@ -1,13 +1,14 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="GRN.aspx.cs" Inherits="Crescent_POS.GRN" %>
 
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
+<%@ Register Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" tagPrefix="ajax" %> 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" Class="content-wrapper"> 
     <form runat="server">  
-        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+        <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel ID="updatepnl" runat="server">
+            <ContentTemplate>
     <div class="content-wrapper"><!--Content Wrapper. Contains page content-->   
     <div class="content-header"><!-- Content Header (Page header) -->
       <div class="container-fluid">
@@ -111,6 +112,8 @@
                   <h5><i class="icon fas fa-check"></i> Alert!</h5>
                  Data update successfully!
                 </div>
+
+
     <!-- Main content -->
         <div class="container-fluid">
            <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
@@ -130,8 +133,9 @@
               <div class="col-md-6"> 
 
                 <div class="form-group">
-                  <label>Supplier Name</label>
-                    <asp:DropDownList ID="ddlSupplierID" runat="server" Class="form-control" OnTextChanged="ddlSupplierID_TextChanged" AutoPostBack="true">
+                  <label>Company Name</label>
+                    <asp:DropDownList ID="ddlSupplierID" runat="server" Class="form-control" DataTextField="suppliername" AppendDataBoundItems="true" DataValueField="supplierid" OnTextChanged="ddlSupplierID_TextChanged" AutoPostBack="true">
+                        <asp:ListItem Value="0">--Select Company Name--</asp:ListItem>
                     </asp:DropDownList>
                 </div><!-- /.form-group -->
                 
@@ -145,7 +149,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Rep Name</label>
-                    <asp:DropDownList ID="ddlUserLevel" runat="server" Class="form-control">
+                    <asp:DropDownList ID="ddlUserLevel" runat="server" DataValueField="" DataTextField="repname" AppendDataBoundItems="true" Class="form-control">
+                         <asp:ListItem Value="0">--Select Rep Name--</asp:ListItem>
                             <%--<asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
                             <asp:ListItem>Manager</asp:ListItem>--%>
@@ -203,19 +208,9 @@
                           <div class="form-group">
                   <label>Brand</label>
                     <asp:TextBox ID="txtBrand" runat="server" Class="form-control"></asp:TextBox>
-                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchBrand" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender1" runat="server">
-                              </ajaxToolkit:AutoCompleteExtender>
-                            
-
-                              <%--<ajaxToolkit:ComboBox ID="cmbBrand" runat="server"  DataSourceID="" DataTextField="brand" DataValueField="brand" AutoCompleteMode="SuggestAppend">
-                             <%--</ajaxToolkit:ComboBox>--%>
-                              <%--<asp:SqlDataSource ID="sdsBrand" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="select distinct [brand] from grnproduct"></asp:SqlDataSource>--%>
-                            
-                    <%--<asp:DropDownList ID="DropDownList1" runat="server" Class="form-control">
-                            <asp:ListItem>Admin</asp:ListItem>
-                            <asp:ListItem>Cashier</asp:ListItem>
-                            <asp:ListItem>Manager</asp:ListItem>
-                    </asp:DropDownList>--%>
+                           <ajax:AutoCompleteExtender ServiceMethod="SearchBrand" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtBrand" ID="AutoCompleteExtender1" runat="server">
+                           </ajax:AutoCompleteExtender> 
+                          
                 </div><!-- /.form-group -->
                       </div><!-- /.col -->
 
@@ -223,8 +218,8 @@
                          <div class="form-group">
                   <label>Category</label>
                              <asp:TextBox ID="txtCategory" runat="server" Class="form-control"></asp:TextBox>
-                              <ajaxToolkit:AutoCompleteExtender ServiceMethod="SearchCategory" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtCategory" ID="AutoCompleteExtender2" runat="server">
-                              </ajaxToolkit:AutoCompleteExtender>
+                              <ajax:AutoCompleteExtender ServiceMethod="SearchCategory" MinimumPrefixLength="1" CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" TargetControlID="txtCategory" ID="AutoCompleteExtender2" runat="server">
+                              </ajax:AutoCompleteExtender>
                     <%--<asp:DropDownList ID="DropDownList3" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
@@ -415,9 +410,12 @@
             
           </div>
         </div><!-- /.row -->
-      
+      </div>    
+            </div><!-- /SELECT2 EXAMPLE --> 
         </div><!--container-fluid-->
         </div><!--/.content-wrapper-->
+                </ContentTemplate>
+            </asp:UpdatePanel>
       </form> 
     </asp:Content>
 

@@ -1,9 +1,12 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="POS.aspx.cs" Inherits="Crescent_POS.POS" %>
 
-
+<%@ Register Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" tagPrefix="ajax" %>  
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" Class="content-wrapper"> 
-  <form runat="server">   
+  <form runat="server">  
+      <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
+      <asp:UpdatePanel ID="updatepnl" runat="server">
+      <ContentTemplate>
     <div class="content-wrapper"><!--Content Wrapper. Contains page content-->   
     <div class="content-header"><!-- Content Header (Page header) -->
       <div class="container-fluid">
@@ -198,7 +201,9 @@
 
           
         </div><!--container-fluid-->
-        </div><!--/.content-wrapper-->
+        </div><!--/.content-wrapper--> 
+          </ContentTemplate>
+          </asp:UpdatePanel>
       </form> 
     </asp:Content>
 
