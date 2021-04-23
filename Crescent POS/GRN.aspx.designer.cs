@@ -310,6 +310,24 @@ namespace Crescent_POS {
         protected global::System.Web.UI.WebControls.Button updatebtn;
         
         /// <summary>
+        /// gvprdctdiv1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gvprdctdiv1;
+        
+        /// <summary>
+        /// gvprdctdiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gvprdctdiv;
+        
+        /// <summary>
         /// prdctgv control.
         /// </summary>
         /// <remarks>
