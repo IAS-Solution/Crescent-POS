@@ -28,10 +28,10 @@ namespace Crescent_POS
                     Response.Redirect("Login.aspx");
                 }
             }
-            supidload();
+            cidload();
             DataLoard();
         }
-        public void supidload()
+        public void cidload()
         {
             
             try
@@ -41,7 +41,7 @@ namespace Crescent_POS
                 MySqlCommand com = new MySqlCommand();
               
                 com.Connection = conn;
-                com.CommandText = "SELECT COUNT(*) from tblsupplier";
+                com.CommandText = "SELECT COUNT(*) from tblcompany";
 
                 int result = int.Parse(com.ExecuteScalar().ToString());
                 conn.Close();
@@ -54,7 +54,7 @@ namespace Crescent_POS
                     con.Open();
                     try
                     {
-                        MySqlCommand command = new MySqlCommand("select max(SupplierID) from tblsupplier", con);
+                        MySqlCommand command = new MySqlCommand("select max(id) from tblcompany", con);
                         string id = command.ExecuteScalar().ToString();
                         int uid = Convert.ToInt32(id);
                         int uuid = uid + 1;
@@ -81,13 +81,13 @@ namespace Crescent_POS
         public void txtboxclear()
         {
             txtFullName.Text = "";
-            txtrepphone.Text = "";
+            //txtrepphone.Text = "";
             txtaddress.Text = "";
             txtphone.Text = "";
             txtemail.Text = "";
-            txtrepname.Text = "";
-            txtamt.Text = "";
-            ddlcreditperiod.SelectedIndex = 0;
+            //txtrepname.Text = "";
+            //txtamt.Text = "";
+            //ddlcreditperiod.SelectedIndex = 0;
 
         }
         public void hidealert()
@@ -107,7 +107,7 @@ namespace Crescent_POS
         public void DataLoard()
         {
             con.Close();
-            string cmd = "select SupplierName,MobileNumber,Email,Address,RepName,RepPhonenum,Creditamt,Creditperiod from tblsupplier";
+            string cmd = "select cName,cAddress,cemail,cnumber from tblcompany";
             MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
@@ -122,11 +122,11 @@ namespace Crescent_POS
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (cbCredi.Checked == false)
-            {
-                txtamt.Text = "0.00";
-                ddlcreditperiod.SelectedIndex = 0;
-            }
+            //if (cbCredi.Checked == false)
+            //{
+            //    txtamt.Text = "0.00";
+            //    ddlcreditperiod.SelectedIndex = 0;
+            //}
             hidealert();
 
             try
@@ -143,12 +143,12 @@ namespace Crescent_POS
 
                     return;
                 }
-                 if (txtrepphone.Text == "")
-                {
-                    wrningrepphone.Visible = true;
+                // if (txtrepphone.Text == "")
+                //{
+                //    wrningrepphone.Visible = true;
 
-                    return;
-                }
+                //    return;
+                //}
                  if (txtphone.Text == "")
                 {
                     wrningphone.Visible = true;
@@ -161,44 +161,44 @@ namespace Crescent_POS
 
                     return;
                 }
-                 if (txtrepname.Text == "")
-                {
-                    wrningrepname.Visible = true;
+                // if (txtrepname.Text == "")
+                //{
+                //    wrningrepname.Visible = true;
 
-                    return;
-                }
-                 if (cbCredi.Checked==true)
-                {
-                     if (txtamt.Text == "")
-                    {
-                        wrningamt.Visible = true;
+                //    return;
+                //}
+                // if (cbCredi.Checked==true)
+                //{
+                //     if (txtamt.Text == "")
+                //    {
+                //        wrningamt.Visible = true;
 
-                        return;
-                    }
-                }
+                //        return;
+                //    }
+                //}
                 
 
                  
-                    //data insert
-                    MySqlConnection con1 = new MySqlConnection(connectionString);
-                    con1.Open();
-                    MySqlCommand cm = new MySqlCommand("Insert into tblsupplier (SupplierID,SupplierName,MobileNumber,Email,Address,RepName,RepPhonenum,Creditamt,Creditperiod )  values(@SupplierID,@SupplierName,@MobileNumber,@Email,@Address,@RepName,@RepPhonenum,@Creditamt,@Creditperiod)", con1);
+                    //data insert company
+                    MySqlConnection con = new MySqlConnection(connectionString);
+                    con.Open();
+                    MySqlCommand cm = new MySqlCommand("Insert into tblcompany(id,cName,cAddress,cemail,cnumber)  values(@id,@cName,@cAddress,@cemail,@cnumber)", con);
 
-                    cm.Parameters.AddWithValue("@SupplierID", txtsupid.Text);
-                    cm.Parameters.AddWithValue("@SupplierName", txtFullName.Text);
-                    cm.Parameters.AddWithValue("@MobileNumber", txtphone.Text);
-                    cm.Parameters.AddWithValue("@Email", txtemail.Text);
-                    cm.Parameters.AddWithValue("@Address", txtaddress.Text);
-                    cm.Parameters.AddWithValue("@RepName", txtrepname.Text);
-                    cm.Parameters.AddWithValue("@RepPhonenum", txtrepphone.Text);
-                    cm.Parameters.AddWithValue("@Creditamt", txtamt.Text);
-                    cm.Parameters.AddWithValue("@Creditperiod", ddlcreditperiod.Text);
+                    cm.Parameters.AddWithValue("@id", txtsupid.Text);
+                    cm.Parameters.AddWithValue("@cName", txtFullName.Text);
+                    cm.Parameters.AddWithValue("@cAddress", txtaddress.Text);
+                    cm.Parameters.AddWithValue("@cemail", txtemail.Text);
+                    cm.Parameters.AddWithValue("@cnumber", txtphone.Text);
+                    //cm.Parameters.AddWithValue("@RepName", txtrepname.Text);
+                    //cm.Parameters.AddWithValue("@RepPhonenum", txtrepphone.Text);
+                    //cm.Parameters.AddWithValue("@Creditamt", txtamt.Text);
+                    //cm.Parameters.AddWithValue("@Creditperiod", ddlcreditperiod.Text);
 
                     cm.ExecuteNonQuery();
                     cm.Dispose();
 
                     savealert.Visible = true;
-                    con1.Close();
+                    con.Close();
                 
                 
             }
@@ -208,7 +208,7 @@ namespace Crescent_POS
             }
             txtboxclear();
             DataLoard();
-            supidload();
+            cidload();
 
         }
         protected void cbCredit_ServerChange(object sender, EventArgs e)
@@ -218,7 +218,7 @@ namespace Crescent_POS
 
         protected void cbCredi_CheckedChanged(object sender, EventArgs e)
         {
-            pnl1.Visible = cbCredi.Checked;
+           // pnl1.Visible = cbCredi.Checked;
         }
     }
 }

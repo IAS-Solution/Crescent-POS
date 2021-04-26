@@ -99,8 +99,72 @@
                   <h5><i class="icon fas fa-check"></i> Alert!</h5>
                  Data update successfully!
                 </div>
+
+
     <!-- Main content -->
       <div class="container-fluid">
+
+           <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
+          <div class="card-header">
+            <h3 class="card-title">Add Company</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div><!-- /.card-header -->      
+         
+            <div class="card-body">
+              
+            <div class="row">
+              <div class="col-md-6"> 
+                   <div class="form-group">
+                  <label id="supidlbl" runat="server">Company ID</label>                             
+                   <asp:TextBox ID="txtsupid" runat="server" Class="form-control" placeholder="Company Name" ReadOnly="true"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                  <label>Company Address</label>
+                    <asp:TextBox ID="txtaddress" runat="server" Class="form-control" placeholder="Address"></asp:TextBox>
+                </div><!-- /.form-group --> 
+                  
+                  
+
+                   <div class="form-group">
+                  <label>Company Email</label>
+                    <asp:TextBox ID="txtemail" runat="server" Class="form-control" placeholder="Email"></asp:TextBox>
+                </div><!-- /.form-group -->
+              </div><!-- /.col -->
+   
+              <div class="col-md-6">
+                  <div class="form-group">
+                  <label>Company Name</label>
+                    <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="Company Name"></asp:TextBox>
+                </div><!-- /.form-group -->
+                
+                <div class="form-group">
+                  <label>Company Phone Number</label>
+                    <asp:TextBox ID="txtphone" runat="server" Class="form-control" placeholder="Phone Number"></asp:TextBox>
+                </div><!-- /.form-group -->
+                  
+              </div><!-- /.col -->        
+            </div><!-- /.row -->          
+          </div><!-- /.card-body -->
+          
+          <div class="card-footer">  
+              <asp:Button ID="btnSave" runat="server" Class="btn btn-primary" Text="Save"  OnClick="btnSave_Click"/>
+               <asp:Button ID="btnupdate" runat="server" Class="btn btn-warning" Text="Update"/>
+              <asp:Button ID="btndelete" runat="server" Class="btn btn-danger" Text="Delete"/>
+              <%--<button type="button" class="btn btn-primary">Primary</button>--%>
+            <%--  <button type="button" class="btn btn-secondary">Secondary</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>--%>
+          </div>            
+        </div><!-- /.card -->
+
+
+
            <div class="card card-default"><!-- SELECT2 EXAMPLE -->  
           <div class="card-header">
             <h3 class="card-title">Add Supplier</h3>
@@ -117,29 +181,29 @@
             <div class="row">
               <div class="col-md-6"> 
                    <div class="form-group">
-                  <label id="supidlbl" runat="server">Supplier ID</label>               
+                  <label id="Label1" runat="server">Company ID</label>               
                 
- <asp:TextBox ID="txtsupid" runat="server" Class="form-control" placeholder="Company Name" ReadOnly="true"></asp:TextBox>
+ <asp:TextBox ID="TextBox1" runat="server" Class="form-control" placeholder="Company Name" ReadOnly="true"></asp:TextBox>
                 </div>
 
                 <div class="form-group">
                   <label>Company Name</label>
-                    <asp:TextBox ID="txtFullName" runat="server" Class="form-control" placeholder="Company Name"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" Class="form-control" placeholder="Company Name"></asp:TextBox>
                 </div><!-- /.form-group -->
                 
                 <div class="form-group">
                   <label>Company Address</label>
-                    <asp:TextBox ID="txtaddress" runat="server" Class="form-control" placeholder="Address"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Class="form-control" placeholder="Address"></asp:TextBox>
                 </div><!-- /.form-group --> 
                   
                    <div class="form-group">
                   <label>Company Phone Number</label>
-                    <asp:TextBox ID="txtphone" runat="server" Class="form-control" placeholder="Phone Number"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Phone Number"></asp:TextBox>
                 </div><!-- /.form-group -->
 
                    <div class="form-group">
                   <label>Company Email</label>
-                    <asp:TextBox ID="txtemail" runat="server" Class="form-control" placeholder="Email"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="Email"></asp:TextBox>
                 </div><!-- /.form-group -->
               </div><!-- /.col -->
 
@@ -147,34 +211,34 @@
               <div class="col-md-6">
                  <div class="form-group">
                   <label>Rep Name</label>
-                    <asp:TextBox ID="txtrepname" runat="server" Class="form-control" placeholder="Rep Name"></asp:TextBox>
+                    <asp:TextBox ID="TextBox6" runat="server" Class="form-control" placeholder="Rep Name"></asp:TextBox>
                 </div><!-- /.form-group -->
                 
                 <div class="form-group">
                   <label>Phone Number</label>
-                    <asp:TextBox ID="txtrepphone" runat="server" Class="form-control" TextMode="Phone" placeholder="Phone Number"></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" Class="form-control" TextMode="Phone" placeholder="Phone Number"></asp:TextBox>
                 </div><!-- /.form-group -->
                   
                   <div class="form-group">
                      <%-- <div class="icheck-primary">--%>
                           <%--<input type="checkbox" id="cbCredit">--%>
-                          <asp:CheckBox ID="cbCredi" runat="server"  Checked="false" AutoPostBack="true" OnCheckedChanged="cbCredi_CheckedChanged" />
+                          <asp:CheckBox ID="CheckBox1" runat="server"  Checked="false" AutoPostBack="true" OnCheckedChanged="cbCredi_CheckedChanged" />
                           <label for="remember">
                               Credit Supplier
                           </label>
                       <%--</div>--%>
                   </div><!-- /.form-group --> 
                   
-                  <asp:Panel ID="pnl1" runat="server" Visible="false">
+                  <asp:Panel ID="Panel1" runat="server" Visible="false">
                       <div class="form-group">
                           <label>Credit Amount</label>
-                          <asp:TextBox ID="txtamt" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                          <asp:TextBox ID="TextBox8" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
                       </div>
                       <!-- /.form-group -->
 
                       <div class="form-group">
                           <label>Credit Period</label>
-                          <asp:DropDownList ID="ddlcreditperiod" runat="server" Class="form-control">
+                          <asp:DropDownList ID="DropDownList1" runat="server" Class="form-control">
                             <asp:ListItem>None</asp:ListItem>
                               <asp:ListItem>1 Month</asp:ListItem>
                             <asp:ListItem>2 Month</asp:ListItem>
@@ -192,15 +256,17 @@
           </div><!-- /.card-body -->
           
           <div class="card-footer">  
-              <asp:Button ID="btnSave" runat="server" Class="btn btn-primary" Text="Save"  OnClick="btnSave_Click"/>
-               <asp:Button ID="btnupdate" runat="server" Class="btn btn-warning" Text="Update"/>
-              <asp:Button ID="btndelete" runat="server" Class="btn btn-danger" Text="Delete"/>
+              <asp:Button ID="Button2" runat="server" Class="btn btn-primary" Text="Save"  OnClick="btnSave_Click"/>
+               <asp:Button ID="Button3" runat="server" Class="btn btn-warning" Text="Update"/>
+              <asp:Button ID="Button4" runat="server" Class="btn btn-danger" Text="Delete"/>
               <%--<button type="button" class="btn btn-primary">Primary</button>--%>
             <%--  <button type="button" class="btn btn-secondary">Secondary</button>
               <button type="button" class="btn btn-success">Success</button>
               <button type="button" class="btn btn-danger">Danger</button>--%>
           </div>            
         </div><!-- /.card -->
+
+
 
 
            <div class="row">
@@ -228,14 +294,14 @@
               <div class="card-body table-responsive p-0" style="height: 300px;">
                   <asp:GridView ID="gvsuplier" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true">
                       <Columns>
-                          <asp:BoundField DataField="SupplierName" HeaderText="Company Name" />
-                          <asp:BoundField DataField="MobileNumber" HeaderText="Company Phone No." />
-                          <asp:BoundField DataField="Email" HeaderText="Email" />
-                          <asp:BoundField DataField="Address" HeaderText="Address" />
-                          <asp:BoundField DataField="RepName" HeaderText="Rep Name" />
+                          <asp:BoundField DataField="cName" HeaderText="Company Name" />
+                          <asp:BoundField DataField="cAddress" HeaderText="Address" />
+                          <asp:BoundField DataField="cemail" HeaderText="Email" />
+                          <asp:BoundField DataField="cnumber" HeaderText="Phone No." />
+                          <%--<asp:BoundField DataField="RepName" HeaderText="Rep Name" />
                           <asp:BoundField DataField="RepPhonenum" HeaderText="Rep Phone No." />
                           <asp:BoundField DataField="Creditamt" HeaderText="Credit Amount" />
-                          <asp:BoundField DataField="Creditperiod" HeaderText="Credit Period" />
+                          <asp:BoundField DataField="Creditperiod" HeaderText="Credit Period" />--%>
                       </Columns>
                   </asp:GridView>
               
