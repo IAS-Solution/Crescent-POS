@@ -23,7 +23,7 @@ namespace Crescent_POS
             
             Showdate();
             //ShowTime();
-            txtBarCodeSearch.Focus();
+        
             if (!Page.IsPostBack)
             {
                 if (Session["user_name"] == null)
@@ -59,12 +59,12 @@ namespace Crescent_POS
             DateTime time = DateTime.Now;
         }
 
-        protected void txtBarCodeSearch_TextChanged(object sender, EventArgs e)
+        protected void txtqty_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                string query = "SELECT productid,brand,description,sellingprice,qty from tblstock where barcode = '" + txtBarCodeSearch.Text + "' ";
-                DataTable tempdt = new DataTable();
+            string query = "SELECT productid,brand,description,sellingprice from tblstock where barcode = '" + txtBarCodeSearch.Text + "' ";
+            DataTable tempdt = new DataTable();
             MySqlConnection sqlConn = new MySqlConnection(connectionString);
             sqlConn.Open();
             MySqlCommand cmd = new MySqlCommand(query, sqlConn);
@@ -77,7 +77,7 @@ namespace Crescent_POS
                 string brand = tempdt.Rows[0]["brand"].ToString();
                 string des = tempdt.Rows[0]["description"].ToString();
                 decimal sp = Convert.ToDecimal(tempdt.Rows[0]["sellingprice"]);
-                int qty = Convert.ToInt32(tempdt.Rows[0]["qty"]);
+                int qty = Convert.ToInt32(txtqty.Text);
                 decimal tot = qty * sp;
 
                 dt = (DataTable)ViewState["Details"];
@@ -91,17 +91,32 @@ namespace Crescent_POS
                 gvbillitem.EmptyDataText = "Qty";
                 gvbillitem.EmptyDataText = "Total Price";
                 gvbillitem.DataBind();
+
+
+                int sum = 0;
+                for (int i = 0; i < gvbillitem.Rows.Count; ++i)
+                {
+                    sum += Convert.ToInt32(gvbillitem.Rows[i].Cells[6].Text);
+                }
+                txtAmount.Text = sum.ToString();
             }
             catch (Exception ex)
             {
                 lblex.Text = ex.Message;
                 wrningex.Visible = true;
             }
-
+            txtqty.Visible = false;
+            txtqty.Text = "";
+            txtBarCodeSearch.Text = "";
 
         }
+        protected void txtBarCodeSearch_TextChanged(object sender, EventArgs e)
+        {
+            txtqty.Visible = true;
+            txtqty.Focus();
+        }
 
-        protected void txtPhoneSearch_TextChanged(object sender, EventArgs e)
+            protected void txtPhoneSearch_TextChanged(object sender, EventArgs e)
         {
             txtCustomerName.Text="";
             txtCustomerID.Text="";
