@@ -420,16 +420,23 @@ namespace Crescent_POS
         public void LoadSupplierID()
         {
 
-
-
-            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from tblSupplier", con);
+            MySqlConnection con = new MySqlConnection(connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblcompany", con);
             MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             ddlSupplierID.DataSource = dt;
             ddlSupplierID.DataBind();
+
+
+            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
+            //con.Open();
+            //MySqlCommand cmd = new MySqlCommand("select * from tblcompany", con);
+            //MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //ddlSupplierID.DataSource = dt;
+            //ddlSupplierID.DataBind();
 
 
 
@@ -543,16 +550,35 @@ namespace Crescent_POS
         protected void ddlSupplierID_TextChanged(object sender, EventArgs e)
         {
 
-            ddlUserLevel.Items.Clear();
-            ddlUserLevel.Items.Add("repname");
-            con.Open();
-            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
-            MySqlCommand cmd = new MySqlCommand("SELECT * from tblsupplier where supplierid=" + ddlSupplierID.SelectedItem.Value, con);
+            //ddlUserLevel.Items.Clear();
+            //ddlUserLevel.Items.Add("Select State");
+
+            MySqlConnection con = new MySqlConnection(connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT * from tblsupplier where cid=" + ddlSupplierID.SelectedItem.Value, con);
             MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             ddlUserLevel.DataSource = dt;
             ddlUserLevel.DataBind();
+
+            //con.Open();
+            //MySqlCommand cmd = new MySqlCommand("SELECT * from tblsupplier where cid=" + ddlSupplierID.SelectedItem.Value, con);
+            //MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //ddlUserLevel.DataSource = dt;
+            //ddlUserLevel.DataBind();
+
+            // ddlUserLevel.Items.Clear();
+            // ddlUserLevel.Items.Add("repname");
+            //con.Open();
+            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
+            //MySqlCommand cmd = new MySqlCommand("SELECT * from tblsupplier where cid=" + ddlSupplierID.SelectedItem.Value, con);
+            //MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //ddlUserLevel.DataSource = dt;
+            //ddlUserLevel.DataBind();
 
             //con.Open();
             //MySqlCommand cmd = new MySqlCommand("SELECT repname from tblsupplier WHERE suppliername='" + ddlSupplierID.Text + "'", con);

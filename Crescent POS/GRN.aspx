@@ -134,7 +134,7 @@
 
                 <div class="form-group">
                   <label>Company Name</label>
-                    <asp:DropDownList ID="ddlSupplierID" runat="server" Class="form-control" DataTextField="suppliername" AppendDataBoundItems="true" DataValueField="supplierid" OnTextChanged="ddlSupplierID_TextChanged" AutoPostBack="true">
+                    <asp:DropDownList ID="ddlSupplierID" runat="server" Class="form-control" DataTextField="cname" AppendDataBoundItems="true" DataValueField="id" OnTextChanged="ddlSupplierID_TextChanged" AutoPostBack="true">
                         <asp:ListItem Value="0">--Select Company Name--</asp:ListItem>
                     </asp:DropDownList>
                 </div><!-- /.form-group -->
@@ -149,7 +149,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Rep Name</label>
-                    <asp:DropDownList ID="ddlUserLevel" runat="server" DataValueField="" DataTextField="repname" AppendDataBoundItems="true" Class="form-control">
+                    <asp:DropDownList ID="ddlUserLevel" runat="server" DataValueField="id" DataTextField="repname" AppendDataBoundItems="true" Class="form-control">
                          <asp:ListItem Value="0">--Select Rep Name--</asp:ListItem>
                             <%--<asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
@@ -250,7 +250,7 @@
                   <label>QTY</label>
                            
                     <asp:TextBox ID="txtQty" runat="server" Class="form-control" onchange="calctxtboxes()" placeholder="0" Width="75px" TextMode="Number" ></asp:TextBox>
-               <script type="text/javascript">
+              <%-- <script type="text/javascript">
     function calctxtboxes() {
         var cp = document.getElementById('<%=txtCostPrice.ClientID%>').value;
         var qty = document.getElementById('<%=txtQty.ClientID%>').value;
@@ -262,7 +262,7 @@
             
         }
     }
-</script>
+</script>--%>
         </div>
                           <!-- /.form-group -->
 
