@@ -2,6 +2,7 @@
 
 <%@ Register Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" tagPrefix="ajax" %>  
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" Class="content-wrapper"> 
   <form runat="server">  
       <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
@@ -41,9 +42,23 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
+                  <div class="form-check form-check-inline m-2">
                   <asp:TextBox ID="txtBarCodeSearch" runat="server" Class="form-control" placeholder="Search Bar code Here"  Width="250px" AutoPostBack="true" OnTextChanged="txtBarCodeSearch_TextChanged"></asp:TextBox>
-                <%--<h3 class="card-title">Product Table</h3>--%>
-
+                <script type="text/javascript">
+                    window.onload = function () {
+                        document.getElementById('<%= txtBarCodeSearch.ClientID%>').focus();
+                    };
+                </script>
+                      </div>
+                   <div class="form-check form-check-inline m-2">
+                    <asp:TextBox ID="txtqty" runat="server" Class="form-control"  Visible="false" placeholder="Enter QTY Here"  Width="250px" AutoPostBack="true" OnTextChanged="txtqty_TextChanged"></asp:TextBox>
+               <script type="text/javascript">
+                   window.onload = function () {
+                       document.getElementById('<%= txtqty.ClientID%>').focus();
+                   };
+               </script>
+                       </div>
+                   
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 200px;">
                     <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
