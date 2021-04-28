@@ -33,7 +33,13 @@
    </div>
       
 
-
+           <div class="alert alert-warning alert-dismissible" id="wrningex" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                    
+               <asp:Label id="lblex" runat="server"></asp:Label>
+                </div>
     
        
          <div class="alert alert-danger alert-dismissible" id="deletealert" runat="server"  Visible="false" style="margin-left: 8px;

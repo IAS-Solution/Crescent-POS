@@ -250,7 +250,7 @@
                   <label>QTY</label>
                            
                     <asp:TextBox ID="txtQty" runat="server" Class="form-control" onchange="calctxtboxes()" placeholder="0" Width="75px" TextMode="Number" ></asp:TextBox>
-              <%-- <script type="text/javascript">
+               <script type="text/javascript">
     function calctxtboxes() {
         var cp = document.getElementById('<%=txtCostPrice.ClientID%>').value;
         var qty = document.getElementById('<%=txtQty.ClientID%>').value;
@@ -262,7 +262,7 @@
             
         }
     }
-</script>--%>
+</script>
         </div>
                           <!-- /.form-group -->
 
