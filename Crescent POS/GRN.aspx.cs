@@ -55,7 +55,7 @@ namespace Crescent_POS
             Showdate();
 
             PIDLoard();
-            //DataLoardgrn();
+            DataLoardgrn();
 
 
         }
@@ -96,7 +96,7 @@ namespace Crescent_POS
                     con1.Open();
                     try
                     {
-                        MySqlCommand command = new MySqlCommand("select max(grnID) from tblgrn", con);
+                        MySqlCommand command = new MySqlCommand("select max(grnID) from tblgrn", con1);
                         string id = command.ExecuteScalar().ToString();
                         int uid = Convert.ToInt32(id);
                         int uuid = uid + 1;
@@ -150,9 +150,10 @@ namespace Crescent_POS
                         int uuid = uid + 1;
                         txtprdctid.Text = uuid.ToString();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        return;
+                        lblex.Text = ex.Message;
+                        wrningex.Visible = true;
                     }
                     finally
                     {
@@ -356,21 +357,26 @@ namespace Crescent_POS
                 {
                     MySqlConnection conn3 = new MySqlConnection(connectionString);
 
-                    MySqlCommand cmd = new MySqlCommand("Select * from tblstock where productid= @productid", con);
+                    MySqlCommand cmd = new MySqlCommand("Select * from tblstock where productid= @productid", conn3);
                     cmd.Parameters.AddWithValue("@productid", prdctgv.Rows[q].Cells[1].Text);
                     conn3.Open();
                     MySqlDataReader dr = cmd.ExecuteReader();
+                    conn3.Close();
                     while (dr.Read())
                     {
                         if (dr.HasRows == true)
                         {
+                            MySqlConnection con33 = new MySqlConnection(connectionString);
                             string upcd = " UPDATE tblstock SET qty=qty+@newqty WHERE productid = @productid";
-                            cmd = new MySqlCommand(upcd);
-                            cmd.Connection = conn3;
+                            MySqlCommand cmd1 = new MySqlCommand(upcd);
+                            cmd1.Connection = con33;
 
-                            cmd.Parameters.AddWithValue("productid", prdctgv.Rows[q].Cells[1].Text);
-                            cmd.Parameters.AddWithValue("newqty", prdctgv.Rows[q].Cells[7].Text);
-                            conn3.Close();
+                            cmd1.Parameters.AddWithValue("productid", prdctgv.Rows[q].Cells[1].Text);
+                            cmd1.Parameters.AddWithValue("newqty", prdctgv.Rows[q].Cells[5].Text);
+
+                            con33.Open();
+                            cmd1.ExecuteNonQuery();
+                            con33.Close();
                         }
                         else
                         {

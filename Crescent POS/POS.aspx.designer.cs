@@ -33,6 +33,15 @@ namespace Crescent_POS
         protected global::System.Web.UI.UpdatePanel updatepnl;
 
         /// <summary>
+        /// txtinvoiceno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtinvoiceno;
+
+        /// <summary>
         /// lblDate control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace Crescent_POS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDate;
+
+        /// <summary>
+        /// savealert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl savealert;
 
         /// <summary>
         /// wrningex control.
@@ -139,6 +157,33 @@ namespace Crescent_POS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPreReceivable;
+
+        /// <summary>
+        /// inlineRadio1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton inlineRadio1;
+
+        /// <summary>
+        /// inlineRadio2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton inlineRadio2;
+
+        /// <summary>
+        /// inlineRadio3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton inlineRadio3;
 
         /// <summary>
         /// txtAmount control.

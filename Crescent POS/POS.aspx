@@ -14,8 +14,8 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <%--<h1 class="m-0">POS</h1>--%>
-              <p>Invoice No:</p>
-              <p>Date :&nbsp;&nbsp;<asp:Label ID="lblDate" runat="server" Text="date"></asp:Label></p>
+              <div class="form-check form-check-inline m-2"><p>Invoice No:</p></div> <div class="form-check form-check-inline m-2"> <asp:TextBox ID="txtinvoiceno" runat="server" Class="form-control" Height="30px" placeholder="Invoice No" ReadOnly="true"></asp:TextBox></div>
+              <p>   &nbsp;&nbsp;Date :&nbsp;&nbsp;<asp:Label ID="lblDate" runat="server" Text="date"></asp:Label></p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -27,7 +27,12 @@
       </div><!-- /.container-fluid -->
     </div><!-- /.content-header -->
     
-           
+            <div class="alert alert-success alert-dismissible" ID="savealert" runat="server"  Visible="false" style="margin-left: 8px;
+    margin-right: 8px; "> 
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                  Bill Data inserted successfully!
+   </div>
         <div class="alert alert-warning alert-dismissible" id="wrningex" runat="server"  Visible="false" style="margin-left: 8px;
     margin-right: 8px;">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -152,15 +157,15 @@
                   <div class="input-group input-group-sm" style="width: 250px;">
                     <%--<input type="text" name="table_search" class="form-control float-right" placeholder="Search">--%>
                       <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <input class="form-check-input" type="radio" runat="server"  name="inlineRadioOptions" id="inlineRadio1" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Cash</label>
                       </div>
                       <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <input class="form-check-input" type="radio" runat="server"  name="inlineRadioOptions" id="inlineRadio2" value="option2">
                           <label class="form-check-label" for="inlineRadio2">Card</label>
                       </div>
                       <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <input class="form-check-input" type="radio" runat="server"  name="inlineRadioOptions" id="inlineRadio3" value="option3">
                           <label class="form-check-label" for="inlineRadio2">Cheque</label>
                       </div>
 
@@ -203,7 +208,7 @@
                   <div class="form-group form-inline m-2">
                   <label>Balance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <asp:TextBox ID="txtBalance" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
-                      <asp:Button id="btn1" runat="server" Class="btn btn-primary ml-5" Text="Settle Bill"/>
+                      <asp:Button id="btn1" runat="server" Class="btn btn-primary ml-5" Text="Settle Bill" OnClick="btn_Click" />
                 </div><!-- /.form-group -->
                   
               </div> <!-- /.card-body -->

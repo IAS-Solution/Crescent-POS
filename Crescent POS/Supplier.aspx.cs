@@ -204,9 +204,10 @@ namespace Crescent_POS
                 
                 
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                Response.Write("<script>alert(" + ex + ")</script>");
+                lblex.Text = ex.Message;
+                wrningex.Visible = true;
             }
             txtboxclear();
             DataLoard();
@@ -315,8 +316,9 @@ namespace Crescent_POS
                     }
                     catch (Exception ex)
                     {
-                        throw ex;
-                    }
+                lblex.Text = ex.Message;
+                wrningex.Visible = true;
+            }
             sidload();
                 
 
@@ -355,7 +357,8 @@ namespace Crescent_POS
             catch (Exception ex)
             {
 
-                throw ex;
+                lblex.Text = ex.Message;
+                wrningex.Visible = true;
             }
         }
     
