@@ -16,6 +16,7 @@ namespace Crescent_POS
         public static string connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         MySqlConnection con = new MySqlConnection(connectionString);
         MySqlDataReader rdr;
+        MySqlCommand cmd;
         DataTable dt = new DataTable();
         
 
@@ -315,6 +316,25 @@ namespace Crescent_POS
                 lblex.Text = ex.Message;
                 wrningex.Visible = true;
             }
+            PritBill();
+        }
+
+        public void PritBill()
+        {
+            rptBill rpt = new rptBill();
+            cmd = new MySqlCommand();
+            DataSet ds = new DataSet();
+            con = new MySqlConnection(connectionString);
+            con.Open();
+            cmd = new MySqlCommand("select * from tblcart where Invoiceno ='" + txtinvoiceno.Text + "'", con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            adp.Fill(ds);
+            ds.Tables[0].TableName = "tblCart";
+            rpt.SetDataSource(ds);
+            System.Drawing.Printing.PrintDocument printDocument = new System.Drawing.Printing.PrintDocument();
+            rpt.PrintOptions.PrinterName = printDocument.PrinterSettings.PrinterName;
+            rpt.PrintToPrinter(1, true, 0, 0);
+           // Cursor = Cursors.Default;
         }
     }
 
