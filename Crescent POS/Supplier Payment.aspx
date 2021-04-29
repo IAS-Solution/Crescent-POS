@@ -42,12 +42,12 @@
               <div class="col-md-6"> 
 
                 <div class="form-group">
-                  <label>Supplier Mobile</label>
+                  <label>GRN ID</label>
                     <asp:TextBox ID="TextBox4" runat="server" Class="form-control" placeholder="Full Name"></asp:TextBox>
                 </div><!-- /.form-group -->
                 
                 <div class="form-group">
-                  <label>GRN ID</label>
+                  <label>GRN Date</label>
                     <asp:TextBox ID="TextBox5" runat="server" Class="form-control" placeholder="User Name"></asp:TextBox>
                 </div><!-- /.form-group --> 
 
@@ -72,11 +72,12 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Total Amount</label>
-                    <asp:DropDownList ID="DropDownList2" runat="server" Class="form-control">
+                    <asp:TextBox ID="TextBox10" runat="server" Class="form-control" placeholder="0.00"></asp:TextBox>
+                    <%--<asp:DropDownList ID="DropDownList2" runat="server" Class="form-control">
                             <asp:ListItem>Admin</asp:ListItem>
                             <asp:ListItem>Cashier</asp:ListItem>
                             <asp:ListItem>Manager</asp:ListItem>
-                    </asp:DropDownList>
+                    </asp:DropDownList>--%>
                 </div><!-- /.form-group -->
                 
                 <div class="form-group">
