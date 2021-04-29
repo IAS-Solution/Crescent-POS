@@ -14,7 +14,7 @@ namespace Crescent_POS
     {
            public static string connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
            MySqlConnection con = new MySqlConnection(connectionString);
-        MySqlCommand cmd;
+           MySqlCommand cmd;
            MySqlDataReader rdr;
 
     
@@ -227,7 +227,7 @@ namespace Crescent_POS
         protected void gvcompany_SelectedIndexChanged(object sender, EventArgs e)
         {
             sidload();
-            txtcid.Text = gvcompany.SelectedRow.Cells[1].Text;
+            lblcid1.Text = gvcompany.SelectedRow.Cells[1].Text;
             txtcname.Text = gvcompany.SelectedRow.Cells[2].Text;
             txtcaddress.Text = gvcompany.SelectedRow.Cells[3].Text;
             txtcemail.Text = gvcompany.SelectedRow.Cells[4].Text;
@@ -236,6 +236,8 @@ namespace Crescent_POS
             txtsname.ReadOnly = false;
             txtsphone.ReadOnly = false;
             cbCredit.Enabled = true;
+
+            getsuppDet();
         }
 
         protected void cbCredit_CheckedChanged(object sender, EventArgs e)
@@ -303,7 +305,7 @@ namespace Crescent_POS
                         cmd = new MySqlCommand(cd);
                         cmd.Connection = con;
                         cmd.Parameters.AddWithValue("@id", txtsid.Text);
-                        cmd.Parameters.AddWithValue("@cid", txtcid.Text);
+                        cmd.Parameters.AddWithValue("@cid", lblcid1.Text);
                         cmd.Parameters.AddWithValue("@repname", txtsname.Text);
                         cmd.Parameters.AddWithValue("@repphonenum", txtsphone.Text);
                         cmd.Parameters.AddWithValue("@creditamt", txtcamount.Text);
@@ -311,7 +313,7 @@ namespace Crescent_POS
                         con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        //getmealsupplement();
+                        getmealsupplement();
                         //clear_meal_form();
                     }
                     catch (Exception ex)
@@ -342,7 +344,7 @@ namespace Crescent_POS
                 {
                     if (conn != null && string.IsNullOrEmpty(message))
                     {
-                        string cmd = "select id,Person,Meal,Charge from HotelHeader, Hotel_meal where HotelHeader.HID = Hotel_meal.HID and HotelHeader.HID = '" + txtcid.Text + "'";
+                        string cmd = "select repname,repphonenum,creditperiod,creditamt from tblsupplie, tblcompany where tblcompany.id = tblsupplier.cid and tblcompany.id = '" + txtcid.Text + "'";
                         MySqlDataAdapter dAdapter = new MySqlDataAdapter(cmd, conn);
                         DataTable dt = new DataTable();
                         DataSet ds = new DataSet();
@@ -361,7 +363,7 @@ namespace Crescent_POS
                 wrningex.Visible = true;
             }
         }
-    
+
 
         //public void getmealsupplement()
         //{
@@ -390,5 +392,48 @@ namespace Crescent_POS
         //        throw ex;
         //    }
         //}
+
+        private void getsuppDet()
+        {
+
+            con.Close();
+            string cmd = "SELECT id,repname,repphonenum,creditperiod,creditamt FROM tblsupplier where cid='" + lblcid1.Text + "'";
+            MySqlDataAdapter myAdapter = new MySqlDataAdapter(cmd, con);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            myAdapter.Fill(ds);
+            dt = ds.Tables[0];
+
+            //Bind the fetched data to gridview
+            gvsupp.DataSource = dt;
+            gvsupp.DataBind();
+
+
+            //try
+            //{
+            //    string message = string.Empty;
+            //    using (MySqlConnection conn = new MySqlConnection(connectionString))
+            //    {
+            //        if (conn != null && string.IsNullOrEmpty(message))
+            //        {
+            //            string cmd = "SELECT id,repname,repphonenum,creditperiod,creditamt FROM tblsupplier where cid='" + txtcid.Text + "'";
+            //            MySqlDataAdapter dAdapter = new MySqlDataAdapter(cmd, conn);
+            //            DataTable dt = new DataTable();
+            //            DataSet ds = new DataSet();
+            //            dAdapter.Fill(ds);
+            //            dt = ds.Tables[0];
+            //            //Bind the fetched data to gridview
+            //            gvsupp.DataSource = dt;
+            //            gvsupp.DataBind();
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw ex;
+            //}
+        }
     }
 }

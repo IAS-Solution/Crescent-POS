@@ -131,7 +131,8 @@
             <div class="row">
               <div class="col-md-6"> 
                    <div class="form-group">
-                  <label id="lblcid" runat="server">Company ID</label>                             
+                  <label>Company ID</label>
+                    <asp:Label ID="lblcid1" runat="server"></asp:Label>
                    <asp:TextBox ID="txtcid" runat="server" Class="form-control" placeholder="Company Name" ReadOnly="true"></asp:TextBox>
                 </div>
 
@@ -261,15 +262,17 @@
               <button type="button" class="btn btn-danger">Danger</button>--%>
           </div>
                
-                <asp:GridView ID="gvsupp" runat="server" Class="table table-head-fixed text-nowrap" GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true" >
+               <div style="height:250px;">
+                <asp:GridView ID="gvsupp" runat="server" Class="table table-head-fixed text-nowrap"  GridLines="Horizontal" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AutoGenerateSelectButton="true" >
                       <Columns>
                           <asp:BoundField DataField="id" HeaderText="ID" />
-                          <asp:BoundField DataField="cName" HeaderText="Company Name" />
-                          <asp:BoundField DataField="cAddress" HeaderText="Address" />
-                          <asp:BoundField DataField="cemail" HeaderText="Email" />
-                          <asp:BoundField DataField="cnumber" HeaderText="Phone No." />
+                          <asp:BoundField DataField="repname" HeaderText="Ref Name" />
+                          <asp:BoundField DataField="repphonenum" HeaderText="Phone No." />
+                          <asp:BoundField DataField="creditperiod" HeaderText="Period" />
+                          <asp:BoundField DataField="creditamt" HeaderText="Amount" />
                       </Columns>
                   </asp:GridView>
+                   </div>
 
         </div><!-- /.card -->
 
