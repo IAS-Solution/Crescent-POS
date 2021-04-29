@@ -541,8 +541,8 @@ namespace Crescent_POS
         protected void ddlSupplierID_TextChanged(object sender, EventArgs e)
         {
 
-            //ddlUserLevel.Items.Clear();
-            //ddlUserLevel.Items.Add("Select State");
+            ddlUserLevel.Items.Clear();
+            ddlUserLevel.Items.Add("Select Rep Name");
 
             MySqlConnection con = new MySqlConnection(connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * from tblsupplier where cid=" + ddlSupplierID.SelectedItem.Value, con);

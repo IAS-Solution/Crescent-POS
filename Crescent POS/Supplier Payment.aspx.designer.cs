@@ -13,13 +13,13 @@ namespace Crescent_POS {
     public partial class Supplier_Payment {
         
         /// <summary>
-        /// TextBox4 control.
+        /// ddlGRNID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGRNID;
         
         /// <summary>
         /// TextBox5 control.
@@ -58,13 +58,13 @@ namespace Crescent_POS {
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// TextBox10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.TextBox TextBox10;
         
         /// <summary>
         /// TextBox6 control.
