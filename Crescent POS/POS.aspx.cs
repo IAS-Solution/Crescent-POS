@@ -39,7 +39,7 @@ namespace Crescent_POS
                 if (ViewState["Details"] == null)
                 {
 
-                    dt.Columns.Add("Product ID");
+                    dt.Columns.Add("Stock ID");
                     dt.Columns.Add("Brand");
                     dt.Columns.Add("Description");
                     dt.Columns.Add("Selling Price");
@@ -115,7 +115,7 @@ namespace Crescent_POS
         {
             try
             {
-                string query = "SELECT productid,brand,description,sellingprice from tblstock where barcode = '" + txtBarCodeSearch.Text + "' ";
+                string query = "SELECT stockid,brand,description,sellingprice from tblstock where barcode = '" + txtBarCodeSearch.Text + "' ";
                 DataTable tempdt = new DataTable();
                 MySqlConnection sqlConn = new MySqlConnection(connectionString);
                 sqlConn.Open();
@@ -125,7 +125,7 @@ namespace Crescent_POS
                 da.Fill(tempdt);
                 sqlConn.Close();
 
-                int pid = Convert.ToInt32(tempdt.Rows[0]["productid"]);
+                int pid = Convert.ToInt32(tempdt.Rows[0]["stockid"]);
                 string brand = tempdt.Rows[0]["brand"].ToString();
                 string des = tempdt.Rows[0]["description"].ToString();
                 decimal sp = Convert.ToDecimal(tempdt.Rows[0]["sellingprice"]);
@@ -136,7 +136,7 @@ namespace Crescent_POS
                 dt.Rows.Add(pid, brand, des, sp, qty, tot);
                 ViewState["Details"] = dt;
                 gvbillitem.DataSource = dt;
-                gvbillitem.EmptyDataText = "Product ID";
+                gvbillitem.EmptyDataText = "Stock ID";
                 gvbillitem.EmptyDataText = "Brand";
                 gvbillitem.EmptyDataText = "Description";
                 gvbillitem.EmptyDataText = "Selling Price";
@@ -214,6 +214,11 @@ namespace Crescent_POS
                 }
 
             }
+        }
+        public void gridclear()
+        {
+            gvbillitem.DataSource = null;
+            gvbillitem.DataBind();
         }
         protected void gvbillitem_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -298,11 +303,11 @@ namespace Crescent_POS
                 for (int q = 0; q <= gvbillitem.Rows.Count - 1; q++)
                 {
                     MySqlConnection conn3 = new MySqlConnection(connectionString);
-                    string upcd = " UPDATE tblstock SET qty=qty-@newqty WHERE productid = @productid";
+                    string upcd = " UPDATE tblstock SET qty=qty-@newqty WHERE stockid = @stockid";
                     MySqlCommand cmd1 = new MySqlCommand(upcd);
                     cmd1.Connection = conn3;
 
-                    cmd1.Parameters.AddWithValue("productid", gvbillitem.Rows[q].Cells[1].Text);
+                    cmd1.Parameters.AddWithValue("stockid", gvbillitem.Rows[q].Cells[1].Text);
                     cmd1.Parameters.AddWithValue("newqty", gvbillitem.Rows[q].Cells[5].Text);
 
                     conn3.Open();
@@ -317,6 +322,7 @@ namespace Crescent_POS
                 wrningex.Visible = true;
             }
             PritBill();
+            gridclear();
         }
 
         public void PritBill()

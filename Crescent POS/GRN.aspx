@@ -188,12 +188,12 @@
               
                   <div class="row">
 
-              <div class="col-md-3"> 
+              <%--<div class="col-md-3"> 
                 <div class="form-group">
                   <label>Product ID</label>
                     <asp:TextBox ID="txtprdctid" runat="server" Class="form-control" placeholder="Product ID" ReadOnly="false"></asp:TextBox>
                 </div><!-- /.form-group -->
-              </div><!-- /.col -->
+              </div><!-- /.col -->--%>
 
 
                       <div class="col-md-3">
@@ -294,6 +294,7 @@
           <div class="card-footer">  
               <asp:Button ID="addbtn" runat="server" Class="btn btn-primary" Text="Add Product" OnClick="addbtn_Click" />
                <asp:Button ID="updatebtn" runat="server" Class="btn btn-warning" Text="Update Product"/>
+              <asp:Button ID="clear" runat="server" Class="btn btn-warning" Text="Clear" OnClick="clear_Click" />
              
               <br /> <br />
               <div id="gvprdctdiv1" runat="server"  Visible="false" >
